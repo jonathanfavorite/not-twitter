@@ -61,7 +61,7 @@ export default function Timeline() {
               tempObject.body.text = resp;
 
               let includePic =
-                Math.floor(Math.random() * 100) % 2 === 0 ? true : false;
+                Math.floor(Math.random() * 100) % 3 === 0 ? true : false;
               if (includePic) {
                 let newWidth = Math.floor(Math.random() * 200) + 500;
                 
