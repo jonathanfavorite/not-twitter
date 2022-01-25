@@ -9,10 +9,17 @@ export default function Timeline() {
   const [name, setName] = useState("Jonathan");
 
   const handleSetTweets = (args) => {
-    setTweets([...tweets, args]);   
+    let oldArr = tweets;
+    for(let i = 0; i < args.length; i++)
+    {
+      oldArr.push(args[i]);
+      //setTweets([...tweets, args[i]]);
+    }
+    setTweets(oldArr);
   };
 
   const getAllTweets = async () => {
+    let tempHoldingArr = [];
     for (let i = 0; i < 5; i++) {
       const response = await fetch("https://randomuser.me/api/?results=1");
       if (response.status >= 200 && response.status <= 299) {
@@ -52,23 +59,24 @@ export default function Timeline() {
             if (textResponse) {
               let resp = textResponseData;
               if (textResponseData[0].length >= 180) {
-                resp = resp[0].substr(0, 180) + ".";
+                resp = resp[0].substr(0, 30) + ".";
               }
               tempObject.body.text = resp;
+
+              let includePic =
+                Math.floor(Math.random() * 100) % 3 == 0 ? true : false;
+              if (includePic) {
+                tempObject.body.image =
+                  "https://picsum.photos/600/200?random=1";
+              }
+
+              tempHoldingArr.push(tempObject);
             }
           }
-
-          let includePic =
-            Math.floor(Math.random() * 100) % 3 == 0 ? true : false;
-          if (includePic) {
-            tempObject.body.image = "https://picsum.photos/600/200?random=1";   
-          }
-
-          handleSetTweets(tempObject);
-          
         }
       }
     }
+    handleSetTweets(tempHoldingArr);
     setLoading(false);
   };
 
@@ -80,7 +88,11 @@ export default function Timeline() {
   return (
     <>
       {loading && <Loading />}
-      {<h1>There are <span>{tweets.length}</span> items in <em>tweets</em></h1>} 
+      {
+        // <h1>
+        //   There are <span>{tweets.length}</span> items in <em>tweets</em>
+        // </h1>
+      }
       {tweets &&
         tweets.map((item, index) => {
           return (

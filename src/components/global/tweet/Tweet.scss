@@ -15,7 +15,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50px;
-            background-color: red;
+            background-color: #efefef;
         }
     }
     .tweet_right {
@@ -62,6 +62,10 @@
                 flex: 1;
                 text-align: right;
                 align-self: flex-end;
+                .tweet_desc_elipses_wrap {
+                    width:100%;
+                    
+                }
                 .tweet_desc_elipses {
                     width: 20px;
                     display: inline-block;
