@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "../Loading/Loading";
 import Tweet from "../tweet/Tweet";
 import "./Timeline.scss";
@@ -6,25 +6,22 @@ import "./Timeline.scss";
 export default function Timeline() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [name, setName] = useState("Jonathan");
 
   const handleSetTweets = (args) => {
     let oldArr = tweets;
-    for(let i = 0; i < args.length; i++)
-    {
+    for (let i = 0; i < args.length; i++) {
       oldArr.push(args[i]);
-      //setTweets([...tweets, args[i]]);
     }
     setTweets(oldArr);
   };
 
   const getAllTweets = async () => {
     let tempHoldingArr = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
       const response = await fetch("https://randomuser.me/api/?results=1");
       if (response.status >= 200 && response.status <= 299) {
         const data = await response.json();
-        if (data) {
+        if (data !== "") {
           let fakeMetrics = {
             comments: Math.floor(Math.random() * 10000),
             retweets: Math.floor(Math.random() * 10000),
@@ -64,10 +61,11 @@ export default function Timeline() {
               tempObject.body.text = resp;
 
               let includePic =
-                Math.floor(Math.random() * 100) % 3 == 0 ? true : false;
+                Math.floor(Math.random() * 100) % 2 === 0 ? true : false;
               if (includePic) {
-                tempObject.body.image =
-                  "https://picsum.photos/600/200?random=1";
+                let newWidth = Math.floor(Math.random() * 200) + 500;
+                
+                tempObject.body.image = `https://picsum.photos/650/400?random=1&t=${Date.now()}`;
               }
 
               tempHoldingArr.push(tempObject);
@@ -80,7 +78,7 @@ export default function Timeline() {
     setLoading(false);
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setLoading(true);
     getAllTweets();
   }, []);
