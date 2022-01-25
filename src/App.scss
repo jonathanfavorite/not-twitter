@@ -17,6 +17,7 @@ body {
   min-height: 200vh;
   @media (max-width: $phoneWidth) {
     flex-direction: column;
+    padding-bottom:60px;
   }
 
   #sidebar_container {
@@ -25,8 +26,6 @@ body {
     position: sticky;
     justify-content: right;
     @media (max-width: $phoneWidth) {
-      display:block;
-      background:Red;
     }
   }
 
@@ -47,8 +46,8 @@ body {
     @media (max-width: $phoneWidth) {
       width:100% !important;
       border-top:1px solid rgb(239, 243, 244);
-      height:60px;
       left:0;
+      height:60px;
       bottom:0;
     }
   }

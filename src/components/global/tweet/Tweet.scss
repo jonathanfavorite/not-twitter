@@ -22,16 +22,17 @@ $phoneWidth: 500px;
         }
     }
     .tweet_right {
-
+        flex-grow: 1;
         .tweet_desc {
             margin-bottom: 2px;
             display: flex;
             align-items: center;
-            flex-grow: 1;
-            flex-shrink: 1;
+            
+            justify-content: space-between;
+      
             width: 100%;
             @media (max-width: $phoneWidth) {
-                font-size:15px;
+                font-size:16px;
             }
             .tweet_desc_left {
                 .tweet_name {
@@ -83,8 +84,12 @@ $phoneWidth: 500px;
         }
 
         .tweet_body {
-            font-size:17px;
+            font-size:15px;
             line-height:20px;
+            @media (max-width: $phoneWidth)
+            {
+                font-size:14px;
+            }
             .tweet_image_large {
                 margin-top:10px;
                 max-height:400px;
@@ -97,8 +102,6 @@ $phoneWidth: 500px;
                 
                 }
             }
-           
-
         }
 
         .tweet_metrics {
@@ -106,6 +109,7 @@ $phoneWidth: 500px;
             margin-top:10px;
             justify-content: space-between;
             max-width:425px;
+            font-size:13px;
             cursor: pointer;
             color:#536471;
             @media (max-width: $phoneWidth)
@@ -115,7 +119,7 @@ $phoneWidth: 500px;
             .metric_icon {
                 display:inline-block;
                 vertical-align: middle;
-                margin-right:10px;
+                margin-right:2px;
                 padding:8px;
                 cursor: pointer;
                 line-height:5px;
@@ -123,6 +127,7 @@ $phoneWidth: 500px;
                 width:20px;
                 @media(max-width: $phoneWidth)
                 {
+                    width:16px;
                     margin-right:1px;
                 }
             }
