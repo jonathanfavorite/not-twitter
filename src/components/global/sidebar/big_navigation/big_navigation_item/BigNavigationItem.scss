@@ -1,6 +1,11 @@
+$tabletWidth: 840px;
+$phoneWidth: 500px;
+
+
 .big_navigation_indi {
     letter-spacing: 1px;
     font-weight: lighter;
+
     a {
         font-size:18px;
         color:#000;
@@ -27,6 +32,22 @@
     .navi_indi_text {
         display: flex;
         margin-left:20px;
+        @media (max-width: $phoneWidth) {
+            display:none;
+        }
         
+    }
+}
+
+
+.hideMeForMobile {
+    @media (max-width: $phoneWidth) {
+        display:none;
+    }
+}
+.onlyMobile {
+    display:none;
+    @media (max-width: $phoneWidth) {
+        display:block;
     }
 }

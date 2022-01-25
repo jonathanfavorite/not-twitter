@@ -16,7 +16,7 @@ export default function Sidebar() {
                    <Logo />
                    <BigNaviation />
                 </div>
-                <div className='sidebar-item sidebar-bottom'>
+                <div id='sidebar_myinfo_container' className='sidebar-item sidebar-bottom'>
                     <SidebarUserWidget />
                 </div>
             </div>

@@ -36,11 +36,6 @@ let whatsHappeningList = [
 
 ]
 
-function setBackgroundStyle(imagePath)
-{
-    // test
-}
-
 export default function WhatsHappening() {
     return (
         <>

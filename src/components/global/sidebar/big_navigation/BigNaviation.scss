@@ -1,4 +1,22 @@
+$tabletWidth: 840px;
+$phoneWidth: 500px;
+
 #big_navigation_wrap {
     display: block;
     margin-top:5px;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: $phoneWidth) {
+        flex-direction: row;
+        justify-content: space-evenly;
+        .big_navigation_indi {
+            order: 9;
+        }
+        .sidebaritem_home {
+            order: 0;
+        }
+        .sidebaritem_search {
+            order:1;
+        }
+    }
 }

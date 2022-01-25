@@ -1,3 +1,6 @@
+$tabletWidth: 840px;
+$phoneWidth: 500px;
+
 .large_tweet_button {
     display:flex;
     a {
@@ -15,5 +18,9 @@
         &:hover {
             background:rgba(26,140,216,255);
         }
+    }
+    @media (max-width: $phoneWidth)
+    {
+        display:none;
     }
 }

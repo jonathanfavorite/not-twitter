@@ -67,7 +67,7 @@ export default function ComposeTweetWidget () {
 
   return (
     <>
-      <div id='compose_tweet_wrap'>
+      <div class='compose_tweet_wrap'>
         <div className='compose_tweet_input_area'>
           <div className='compose_tweet_image_wrap'>
             <div className='compose_tweet_image'></div>

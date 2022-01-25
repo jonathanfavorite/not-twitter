@@ -1,3 +1,6 @@
+$tabletWidth: 840px;
+$phoneWidth: 500px;
+
 .tweet {
     display: flex;
     padding: 20px;
@@ -24,7 +27,12 @@
             margin-bottom: 2px;
             display: flex;
             align-items: center;
+            flex-grow: 1;
+            flex-shrink: 1;
             width: 100%;
+            @media (max-width: $phoneWidth) {
+                font-size:15px;
+            }
             .tweet_desc_left {
                 .tweet_name {
                     vertical-align: middle;
@@ -75,6 +83,7 @@
         }
 
         .tweet_body {
+            font-size:17px;
             line-height:20px;
             .tweet_image_large {
                 margin-top:10px;
@@ -99,6 +108,10 @@
             max-width:425px;
             cursor: pointer;
             color:#536471;
+            @media (max-width: $phoneWidth)
+            {
+                font-size:14px;
+            }
             .metric_icon {
                 display:inline-block;
                 vertical-align: middle;
@@ -107,8 +120,11 @@
                 cursor: pointer;
                 line-height:5px;
                 border-radius: 100px;
-      
                 width:20px;
+                @media(max-width: $phoneWidth)
+                {
+                    margin-right:1px;
+                }
             }
             .metric_comments:hover {
                 .metric_icon {

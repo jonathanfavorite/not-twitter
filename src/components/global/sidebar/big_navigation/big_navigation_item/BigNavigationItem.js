@@ -13,9 +13,20 @@ export default function BigNavigationItem(props) {
             <circle cx="7" cy="12" r="1.5"></circle>
         </>
     }
+    let hideForMobile = false;
     return (
         <>
-           <div className='big_navigation_indi'>
+           {/* <div className={
+               (details.showMobile == false && 'hideMeForMobile ') + 
+               (details.onlyMobile == true && 'onlyMobile') + 
+               ' big_navigation_indi'
+               }> */}
+            <div className={
+                'sidebaritem_' + details.class + ' ' +
+                'big_navigation_indi ' + 
+                (details.showOnMobile == false ? 'hideMeForMobile ' : '') +
+                (details.onlyDisplayOnMobile ? 'onlyMobile' : '')
+            }> 
                 <a href={details.url} className={details.text == "Home" ? "big_navi_active" : ""}>
                     <div className="navi_indi_container">
                 <div className='navi_indi_icon'>
