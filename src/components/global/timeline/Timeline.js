@@ -59,7 +59,7 @@ export default function Timeline() {
             if (textResponse) {
               let resp = textResponseData;
               if (textResponseData[0].length >= 180) {
-                resp = resp[0].substr(0, 30) + ".";
+                resp = resp[0].substr(0, 180) + ".";
               }
               tempObject.body.text = resp;
 
