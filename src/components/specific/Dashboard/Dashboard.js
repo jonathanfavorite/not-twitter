@@ -9,13 +9,13 @@ export default function Dashboard() {
 
     const [screen, setScreen] = useState(window.innerWidth);
     
-    window.addEventListener('resize', () => {
-        setScreen(window.innerWidth);
-    });
+    // window.addEventListener('resize', () => {
+    //     setScreen(window.innerWidth);
+    // });
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [screen])
+    // }, [screen])
 
     return (
         <>
