@@ -1,7 +1,16 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 $tabletWidth: 840px;
 $phoneWidth: 500px;
 
 * {
+  -webkit-transition: all 100ms ease-in-out;
+  -o-transition: all 100ms ease-in-out;
   transition: all 100ms ease-in-out;
 }
 
@@ -12,20 +21,32 @@ body {
 }
 
 #master_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
   min-height: 200vh;
   @media (max-width: $phoneWidth) {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     padding-bottom:60px;
   }
 
   #sidebar_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     position: sticky;
-    justify-content: right;
+    -webkit-box-pack: right;
+        -ms-flex-pack: right;
+            justify-content: right;
     @media (max-width: $phoneWidth) {
+      position: absolute;
     }
   }
 
@@ -42,7 +63,10 @@ body {
     height:100%;
     background:#fff;
     border-right: 1px solid rgb(239, 243, 244);
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     @media (max-width: $phoneWidth) {
       width:100% !important;
       border-top:1px solid rgb(239, 243, 244);
@@ -53,8 +77,12 @@ body {
   }
 
   #main_content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     @media (max-width: $phoneWidth) {
       display:block;
     }
@@ -67,7 +95,9 @@ body {
     }
   }
   #main_right {
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding-left: 20px;
     width: 375px;
     @media (max-width: $phoneWidth) {
@@ -86,5 +116,4 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
-
 

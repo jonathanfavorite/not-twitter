@@ -2,167 +2,181 @@ $tabletWidth: 840px;
 $phoneWidth: 500px;
 
 .tweet {
-    display: flex;
-    padding: 20px;
-    border-bottom:1px solid rgb(239, 243, 244);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid rgb(239, 243, 244);
 
-    &:hover {
+  &:hover {
+    cursor: pointer;
+    background-color: #fafafa;
+  }
+
+  .tweet_left {
+    width: 50px;
+    padding-right: 10px;
+    .tweet_userimg {
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+      background-color: #efefef;
+    }
+  }
+  .tweet_right {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    .tweet_desc {
+      margin-bottom: 2px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+
+      -webkit-box-pack: justify;
+
+      -ms-flex-pack: justify;
+
+      justify-content: space-between;
+
+      width: 100%;
+      @media (max-width: $phoneWidth) {
+        font-size: 16px;
+      }
+      .tweet_desc_left {
+        .tweet_name {
+          vertical-align: middle;
+          display: inline-block;
+          a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+          }
+        }
+        .tweet_verified {
+          vertical-align: middle;
+          display: inline-block;
+          width: 20px;
+          margin: 0 5px;
+          height: 20px;
+        }
+        .tweet_username {
+          vertical-align: middle;
+          display: inline-block;
+          a {
+            color: rgb(83, 100, 113);
+            text-decoration: none;
+          }
+        }
+        .tweet_elapsedtime {
+          vertical-align: middle;
+          display: inline-block;
+          .singlepoint {
+            scale: (5);
+          }
+        }
+      }
+      .tweet_desc_right {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        text-align: right;
+        -ms-flex-item-align: end;
+        align-self: flex-end;
+        .tweet_desc_elipses_wrap {
+          width: 100%;
+        }
+        .tweet_desc_elipses {
+          width: 20px;
+          display: inline-block;
+          height: 20px;
+        }
+      }
+    }
+
+    .tweet_body {
+      font-size: 15px;
+      line-height: 20px;
+      @media (max-width: $phoneWidth) {
+        font-size: 14px;
+      }
+      .tweet_image_large {
+        margin-top: 10px;
+        max-height: 400px;
+        background: #efefef;
+        overflow: hidden;
+        border-radius: 20px;
+        border: 1px solid #cfd9de;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+
+    .tweet_metrics {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-top: 10px;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      max-width: 425px;
+      font-size: 13px;
+      cursor: pointer;
+      color: #536471;
+      @media (max-width: $phoneWidth) {
+        font-size: 14px;
+      }
+      .metric_icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 2px;
+        padding: 8px;
         cursor: pointer;
-        background-color: #fafafa;
+        line-height: 5px;
+        border-radius: 100px;
+        width: 20px;
+        @media (max-width: $phoneWidth) {
+          width: 16px;
+          margin-right: 1px;
+        }
+      }
+      .metric_comments:hover {
+        .metric_icon {
+          background: #e1eef6;
+        }
+        path {
+          fill: rgb(29, 155, 240);
+        }
+      }
+      .metric_retweets:hover {
+        .metric_icon {
+          background: #def1eb;
+        }
+        path {
+          fill: rgba(0, 186, 124, 255);
+        }
+      }
+      .metric_hearts:hover {
+        .metric_icon {
+          background: #f7e0eb;
+        }
+        path {
+          fill: rgba(249, 24, 128, 255);
+        }
+      }
+      .metric_share:hover {
+        .metric_icon {
+          background: #e1eef6;
+        }
+        path {
+          fill: rgb(29, 155, 240);
+        }
+      }
     }
-
-    .tweet_left {
-        width: 50px;
-        padding-right: 10px;
-        .tweet_userimg {
-            width: 50px;
-            height: 50px;
-            border-radius: 50px;
-            background-color: #efefef;
-        }
-    }
-    .tweet_right {
-        flex-grow: 1;
-        .tweet_desc {
-            margin-bottom: 2px;
-            display: flex;
-            align-items: center;
-            
-            justify-content: space-between;
-      
-            width: 100%;
-            @media (max-width: $phoneWidth) {
-                font-size:16px;
-            }
-            .tweet_desc_left {
-                .tweet_name {
-                    vertical-align: middle;
-                    display: inline-block;
-                    a {
-                        color: #000;
-                        font-weight: bold;
-                        text-decoration: none;
-                    }
-                }
-                .tweet_verified {
-                    vertical-align: middle;
-                    display: inline-block;
-                    width: 20px;
-                    margin: 0 5px;
-                    height: 20px;
-                }
-                .tweet_username {
-                    vertical-align: middle;
-                    display: inline-block;
-                    a {
-                        color: rgb(83, 100, 113);
-                        text-decoration: none;
-                    }
-                }
-                .tweet_elapsedtime {
-                    vertical-align: middle;
-                    display: inline-block;
-                    .singlepoint {
-                        scale: (5);
-                    }
-                }
-            }
-            .tweet_desc_right {
-                flex: 1;
-                text-align: right;
-                align-self: flex-end;
-                .tweet_desc_elipses_wrap {
-                    width:100%;
-                    
-                }
-                .tweet_desc_elipses {
-                    width: 20px;
-                    display: inline-block;
-                    height: 20px;
-                }
-            }
-        }
-
-        .tweet_body {
-            font-size:15px;
-            line-height:20px;
-            @media (max-width: $phoneWidth)
-            {
-                font-size:14px;
-            }
-            .tweet_image_large {
-                margin-top:10px;
-                max-height:400px;
-                background:#efefef;
-                overflow: hidden;
-                border-radius: 20px;
-                border:1px solid #cfd9de;
-                img {
-                    max-width:100%;
-                
-                }
-            }
-        }
-
-        .tweet_metrics {
-            display:flex;
-            margin-top:10px;
-            justify-content: space-between;
-            max-width:425px;
-            font-size:13px;
-            cursor: pointer;
-            color:#536471;
-            @media (max-width: $phoneWidth)
-            {
-                font-size:14px;
-            }
-            .metric_icon {
-                display:inline-block;
-                vertical-align: middle;
-                margin-right:2px;
-                padding:8px;
-                cursor: pointer;
-                line-height:5px;
-                border-radius: 100px;
-                width:20px;
-                @media(max-width: $phoneWidth)
-                {
-                    width:16px;
-                    margin-right:1px;
-                }
-            }
-            .metric_comments:hover {
-                .metric_icon {
-                    background: #e1eef6;
-                }
-                path {
-                    fill: rgb(29, 155, 240);
-                }
-            }
-            .metric_retweets:hover {
-                .metric_icon {
-                    background:#def1eb;
-                }
-                path {
-                    fill:rgba(0,186,124,255);
-                }
-            }
-            .metric_hearts:hover {
-                .metric_icon {
-                    background:#f7e0eb;
-                }
-                path {
-                    fill:rgba(249,24,128,255);
-                }
-            }
-            .metric_share:hover {
-                .metric_icon {
-                    background: #e1eef6;
-                }
-                path {
-                    fill: rgb(29, 155, 240);
-                }
-            }
-        }
-    }
+  }
 }
