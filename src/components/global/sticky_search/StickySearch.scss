@@ -1,0 +1,42 @@
+#top_sticky_search_wrap {
+    position:sticky;
+    width:100%;
+    z-index: 1000;
+    background:white;
+    vertical-align: middle;
+    left:0;
+    top:0;
+    height:50px;
+    #top_search_box {
+        display: flex;
+        height:40px;
+        padding:15px;
+        align-items: center;
+        justify-content: stretch;
+        box-sizing: border-box;
+        position: relative;
+        border-radius: 20px;
+        top:5px;
+        
+       
+        background:#eff3f4;
+        .icon_wrap {
+            padding:10px;
+        }
+        .top_search_indi {
+            .top_search_icon {
+                width:20px;
+                height:20px;
+            }
+            input {
+                font-size:15px;
+                padding:10px;
+                width:100%;
+                outline:none;
+                border:none;
+                background:#eff3f4;
+            }
+        }
+    }
+
+}

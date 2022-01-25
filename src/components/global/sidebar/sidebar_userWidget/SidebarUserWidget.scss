@@ -1,0 +1,45 @@
+#sidebar-userWidget {
+    display: flex;
+    justify-content: left;
+    padding:10px 20px;
+    margin-right:20px;
+    border-radius: 40px;
+    margin-bottom:20px;
+    align-items: center;
+    transition: all 100ms ease-in-out;
+    cursor: pointer;
+    &:hover {
+        background:#efefef;
+    }
+    .userWidget-image {
+        width:40px;
+        overflow: hidden;
+        border-radius: 100px;
+        .userWidget-image-box {
+            width:40px;
+            height:40px;
+            background:url('../../../../..//public/images/me.jpg') center center no-repeat;
+            background-size: cover;
+        }
+    }
+    .userWidget-details {
+        padding-left:15px;
+        font-size:15px;
+        padding-right:5px;
+        .userWidget-displayname {
+            font-weight: bold;
+            margin-bottom:1px;
+        }
+        .userWidget-username {
+            color:rgb(117, 117, 117);
+        }
+    }
+    .userWidget-more {
+        width:20px;
+        margin-left:auto;
+        .userWidget-more-icon {
+            position:relative;
+            left:5px;
+        }
+    }
+}

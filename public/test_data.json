@@ -1,0 +1,121 @@
+{
+    "results": [
+        {
+            "gender": "female",
+            "name": {
+                "title": "Mrs",
+                "first": "Marina",
+                "last": "Fernandez"
+            },
+            "location": {
+                "street": {
+                    "number": 8623,
+                    "name": "Avenida de Castilla"
+                },
+                "city": "Jerez de la Frontera",
+                "state": "Región de Murcia",
+                "country": "Spain",
+                "postcode": 44181,
+                "coordinates": {
+                    "latitude": "-22.0728",
+                    "longitude": "99.5598"
+                },
+                "timezone": {
+                    "offset": "-8:00",
+                    "description": "Pacific Time (US & Canada)"
+                }
+            },
+            "email": "marina.fernandez@example.com",
+            "login": {
+                "uuid": "a482d16f-6c3a-4e19-8283-bbac3ffdae02",
+                "username": "bluepanda732",
+                "password": "ledzep",
+                "salt": "VmP3dJci",
+                "md5": "7e864deaabe7284766041c5bee2a37f7",
+                "sha1": "3e6d11fe6607cd105729ce5d544cbe8374a76367",
+                "sha256": "3339b7d35fa5a72e1b6454a6725063b0641b36ed7dad11e9f0306f0c3fea36fb"
+            },
+            "dob": {
+                "date": "1981-08-24T23:47:15.090Z",
+                "age": 41
+            },
+            "registered": {
+                "date": "2015-11-11T23:00:15.393Z",
+                "age": 7
+            },
+            "phone": "999-869-013",
+            "cell": "645-317-282",
+            "id": {
+                "name": "DNI",
+                "value": "28896213-W"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/23.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/23.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/23.jpg"
+            },
+            "nat": "ES"
+        }, {
+            "gender": "female",
+            "name": {
+                "title": "Miss",
+                "first": "Jen",
+                "last": "Obrien"
+            },
+            "location": {
+                "street": {
+                    "number": 6972,
+                    "name": "Brick Kiln Road"
+                },
+                "city": "Newcastle upon Tyne",
+                "state": "Berkshire",
+                "country": "United Kingdom",
+                "postcode": "MZ2C 4BR",
+                "coordinates": {
+                    "latitude": "-28.9065",
+                    "longitude": "-16.0627"
+                },
+                "timezone": {
+                    "offset": "+10:00",
+                    "description": "Eastern Australia, Guam, Vladivostok"
+                }
+            },
+            "email": "jen.obrien@example.com",
+            "login": {
+                "uuid": "852c3c33-deeb-4325-a9b7-a2fb080ee377",
+                "username": "beautifulbear261",
+                "password": "mobile",
+                "salt": "5lCCVlIC",
+                "md5": "d15cb41b4d8263ccca98c54caa3764b4",
+                "sha1": "a4c8f45f3ac251b8476c0806d9aeda607634ac32",
+                "sha256": "77b9aa7b2c7adc3118920dafc7530b2c484fb8c26012247ffa02bfc97637d3d3"
+            },
+            "dob": {
+                "date": "1967-07-07T13:30:33.698Z",
+                "age": 55
+            },
+            "registered": {
+                "date": "2018-09-16T02:03:43.921Z",
+                "age": 4
+            },
+            "phone": "019467 81147",
+            "cell": "0785-866-747",
+            "id": {
+                "name": "NINO",
+                "value": "GY 13 85 62 U"
+            },
+            "picture": {
+                "large": "https://randomuser.me/api/portraits/women/12.jpg",
+                "medium": "https://randomuser.me/api/portraits/med/women/12.jpg",
+                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/12.jpg"
+            },
+            "nat": "GB"
+        }
+    ],
+    "info": {
+        "seed": "f8441aef25b81aaa",
+        "results": 2,
+        "page": 1,
+        "version": "1.3"
+    }
+}

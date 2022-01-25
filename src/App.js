@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Sidebar from './components/global/sidebar/Sidebar';
+import StickySearch from './components/global/sticky_search/StickySearch';
+import WhatsHappening from './components/global/whats_happening/WhatsHappening';
+import Dashboard from './components/specific/Dashboard/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <div id="master_container">
+          <Sidebar />
+          <div id='main_content'>
+              <div id='main_left'>
+                <Dashboard />
+              </div>
+              <div id='main_right'>
+                <StickySearch />
+                <WhatsHappening />
+                
+              </div>
+          </div>
+        </div>
+    </>
   );
 }
 

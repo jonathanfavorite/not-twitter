@@ -1,0 +1,24 @@
+.right_sidebar_wrap {
+    background: #f7f9f9;
+    margin-top: 20px;
+    border-radius: 20px;
+    min-height: 300px;
+    h1 {
+        padding: 15px;
+
+        margin: 0;
+        font-size: 20px;
+
+    }
+}
+#whats_happening_wrap {
+    #whats_happening_list {
+        .wh_show_more {
+            padding:20px;
+            a {
+                color: rgb(29, 155, 240);
+                text-decoration: none;
+            }
+        }
+    }
+}

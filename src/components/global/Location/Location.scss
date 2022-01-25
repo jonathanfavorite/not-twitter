@@ -1,0 +1,22 @@
+#top_location_bar_sticky {
+    position:sticky;
+    width:100%;
+    z-index: 1000;
+    background-color: Reba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    left:0;
+    height:50px;
+    top:0;
+    #top_location_bar_main {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding:0px 15px;
+        height:50px;
+        .top_location_text {
+            font-size:20px;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+    }
+}

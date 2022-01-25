@@ -1,0 +1,32 @@
+.big_navigation_indi {
+    letter-spacing: 1px;
+    font-weight: lighter;
+    a {
+        font-size:18px;
+        color:#000;
+        text-decoration: none;
+    }
+    .big_navi_active {
+        font-weight: bold;;
+    }
+    .navi_indi_container {
+        display:inline-flex;
+        align-items: center;
+        border-radius: 20px;
+        padding:13px;
+        transition: all 100ms ease-in-out;
+        padding-right:20px;
+        &:hover {
+            background:#Efefef;
+        }
+    }
+    .navi_indi_icon {
+        width:26px;
+        display: flex;
+    }
+    .navi_indi_text {
+        display: flex;
+        margin-left:20px;
+        
+    }
+}

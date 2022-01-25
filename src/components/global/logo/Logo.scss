@@ -1,0 +1,24 @@
+.logo_wrap {
+    display: flex;
+    height:52px;
+    text-align: center;
+    width:52px;
+    border-radius: 50px;
+    margin-top:2px;
+    position: relative;
+ 
+    justify-content: center;
+    align-items: center;
+    line-height:25px;
+    transition:all 200ms ease-in-out;
+    &:hover {
+        background:rgb(232,245,253);
+    }
+    .logo {
+        position: relative;
+        top:3px;
+        left:0px;
+        width:32px;
+        height:30px;
+    }
+}
