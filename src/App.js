@@ -1,8 +1,10 @@
 import './App.scss';
+import Footer from './components/global/footer/Footer';
 import Sidebar from './components/global/sidebar/Sidebar';
 import StickySearch from './components/global/sticky_search/StickySearch';
 import WhatsHappening from './components/global/whats_happening/WhatsHappening';
-import Dashboard from './components/specific/Dashboard/Dashboard';
+import WhoToFollow from './components/global/who_to_follow/WhoToFollow';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -16,7 +18,8 @@ function App() {
               <div id='main_right'>
                 <StickySearch />
                 <WhatsHappening />
-                
+                <WhoToFollow />
+                <Footer />
               </div>
           </div>
         </div>

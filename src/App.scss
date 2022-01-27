@@ -103,6 +103,19 @@ body {
     @media (max-width: $phoneWidth) {
       display:none;
     }
+    .right_sidebar_wrap {
+      background: #f7f9f9;
+      margin-top: 20px;
+      border-radius: 20px;
+      min-height: 300px;
+      h1 {
+          padding: 15px;
+  
+          margin: 0;
+          font-size: 20px;
+  
+      }
+  }
   }
 }
 

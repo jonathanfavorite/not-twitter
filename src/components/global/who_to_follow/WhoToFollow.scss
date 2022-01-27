@@ -1,8 +1,9 @@
-#whats_happening_wrap {
-    #whats_happening_list {
-        .wh_show_more {
+#who_to_follow_wrap {
+        .wtf_show_more {
             padding:20px;
             cursor: pointer;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
             a {
                 color: rgb(29, 155, 240);
                 text-decoration: none;
@@ -12,5 +13,4 @@
                 cursor: pointer;
             }
         }
-    }
 }

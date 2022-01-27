@@ -39,7 +39,8 @@ $phoneWidth: 500px;
       .compose_tweets_textarea {
         min-height: 40px;
         font-size: 20px;
-        word-wrap: break-word;
+        word-break:break-all;
+        box-sizing: border-box;
         outline: none;
         border-bottom: 1px solid #fff;
         padding-bottom: 20px;

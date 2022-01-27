@@ -1,0 +1,15 @@
+.footer {
+    padding:20px;
+    font-size:14px;
+    line-height:25px;
+    color:rgb(15, 20, 25);
+    a {
+        color:rgb(15, 20, 25);
+        text-decoration: none;
+        display:inline-block;
+        margin-right:10px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

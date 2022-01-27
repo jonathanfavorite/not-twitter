@@ -1,0 +1,55 @@
+.who_to_follow_indi {
+    display:flex;
+    flex: 1;
+    flex-grow: 1;
+    padding:10px;
+    cursor: pointer;
+    &:hover {
+        background: #eff1f1;
+        cursor: pointer;
+    }
+    align-items: center;
+    .wtf_image_wrap {
+        .wtf_image {
+            width:50px;
+            height:50px;
+            border-radius: 50px;
+            background:rgb(15, 20, 25);
+        }
+    }
+    .wtf_desc {
+        padding-left:10px;
+        display:flex;
+        flex-direction: column;
+        ._desc-name {
+            a {
+                text-decoration: none;
+                color:#000;
+                font-weight: bold;
+            }
+            ._desc-verified {
+                display:inline-block;
+                width:20px;
+                vertical-align: middle;
+                margin-left:3px;
+            }
+        }
+        ._desc-username {
+            font-size:14px;
+            color:rgb(15, 20, 25)
+        }
+    }
+    .wtf_follow_wrap {
+        flex-grow: 1;
+        text-align: right;
+        a {
+            background:#000;
+            color:#fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size:13px;
+            padding:10px 25px;
+            border-radius: 20px;
+        }
+    }
+}

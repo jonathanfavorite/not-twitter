@@ -1,36 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Fragment } from "react/cjs/react.production.min";
+import  {AbreNum}  from "../../../../helpers/global-functions";
 import "./WhatsHappeningListItem.scss";
 
 export default function WhatsHappeningListItem(props) {
   const { details } = props;
 
-  function abbreviateNumber(value) {
-    var newValue = value;
-    if (value >= 1000) {
-      var suffixes = ["", "k", "m", "b", "t"];
-      var suffixNum = Math.floor(("" + value).length / 3);
-      var shortValue = "";
-      for (var precision = 2; precision >= 1; precision--) {
-        shortValue = parseFloat(
-          (suffixNum != 0
-            ? value / Math.pow(1000, suffixNum)
-            : value
-          ).toPrecision(precision)
-        );
-        var dotLessShortValue = (shortValue + "").replace(
-          /[^a-zA-Z 0-9]+/g,
-          ""
-        );
-        if (dotLessShortValue.length <= 2) {
-          break;
-        }
-      }
-      if (shortValue % 1 != 0) shortValue = shortValue.toFixed(1);
-      newValue = shortValue + suffixes[suffixNum];
-    }
-    return newValue;
-  }
+  
 
   return (
     <>
@@ -55,7 +31,7 @@ export default function WhatsHappeningListItem(props) {
               </Fragment>
             )}
             {!details.trendingWith && (
-              <Fragment>{abbreviateNumber(details.tweets)} tweets</Fragment>
+              <Fragment>{AbreNum(details.tweets)} tweets</Fragment>
             )}
           </div>
         </div>
@@ -67,8 +43,6 @@ export default function WhatsHappeningListItem(props) {
                 style={{
                   backgroundImage:
                     "url(" +
-                    process.env.PUBLIC_URL +
-                    "/images/" +
                     details.image +
                     ")",
                 }}
