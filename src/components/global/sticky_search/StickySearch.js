@@ -1,13 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './StickySearch.scss'
 
 export default function StickySearch () {
   const [hasFocused, setHasFocused] = useState(false)
+  const searchBoxRef = useRef();
+
+  function handleSearchBoxFocus()
+  {
+    setHasFocused(true);
+  }
+  function handleSearhBoxBlur(){
+    setHasFocused(false);
+  }
 
   return (
     <>
       <div id='top_sticky_search_wrap'>
-        <div id='top_search_box'>
+        <div id='top_search_box' 
+            onBlur={handleSearhBoxBlur} 
+            onFocus={handleSearchBoxFocus} 
+            useRef={searchBoxRef}
+            className={
+              (hasFocused) ? 'blue-border white-background' : ''
+            }
+        >
           <div className='top_search_indi icon_wrap'>
               <div className='top_search_icon'>
             <svg

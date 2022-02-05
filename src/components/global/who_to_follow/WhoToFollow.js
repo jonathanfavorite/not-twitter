@@ -28,7 +28,7 @@ export default function WhoToFollow() {
 
             for(let i = 0; i < data.results.length; i++)
             {
-                console.log(data.results[i]);
+                //console.log(data.results[i]);
                 let holdingObject = {
                     "firstname": data.results[i].name.first,
                     "lastname": data.results[i].name.last,

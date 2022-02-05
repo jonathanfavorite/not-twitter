@@ -30,11 +30,14 @@ function abbreviateNumber(value) {
 }
 
 
+
 export default function Tweet(props) {
   const { details, body, metrics } = props;
+  const showFadeIn = props.showFadeIn ? 'tweet_fadein' : '';
+
   return (
     <>
-      <div className="tweet">
+      <div className={`tweet ${showFadeIn}`}>
         <div className="tweet_left">
           {details.userimage && (
             <>
@@ -88,9 +91,9 @@ export default function Tweet(props) {
           </div>
           <div className="tweet_body">
             {body.text}
-            {body.image && (
+            {body.image  && (
               <div className="tweet_image_large">
-                <img src="https://picsum.photos/700/600" />
+               
               </div>
             )}
           </div>

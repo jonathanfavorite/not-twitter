@@ -1,0 +1,101 @@
+$tabletWidth: 840px;
+$phoneWidth: 500px;
+
+#master_container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    min-height: 200vh;
+    @media (max-width: $phoneWidth) {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      padding-bottom:60px;
+    }
+  
+    #sidebar_container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      position: sticky;
+      -webkit-box-pack: right;
+          -ms-flex-pack: right;
+              justify-content: right;
+      @media (max-width: $phoneWidth) {
+        position: absolute;
+      }
+    }
+  
+    #sidebar_hidden {
+      width:275px;
+      @media (max-width: $phoneWidth) {
+        display:none;
+      }
+    }
+    #sidebar {
+      vertical-align: top;
+      width: 275px;
+      position: fixed;
+      height:100%;
+      background:#fff;
+      border-right: 1px solid rgb(239, 243, 244);
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+         
+      @media (max-width: $phoneWidth) {
+        width:100% !important;
+        border-top:1px solid rgb(239, 243, 244);
+        left:0;
+        height:60px;
+        bottom:0;
+      }
+    }
+  
+    #main_content {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1;
+          -ms-flex-positive: 1;
+              flex-grow: 1;
+      @media (max-width: $phoneWidth) {
+        display:block;
+      }
+    }
+    #main_left {
+      width: 600px;
+      border-right: 1px solid rgb(239, 243, 244);
+      @media (max-width: $phoneWidth) {
+        width: 100%;
+      }
+    }
+    #main_right {
+      -webkit-box-pack: justify;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      padding-left: 20px;
+      width: 375px;
+      @media (max-width: $phoneWidth) {
+        display:none;
+      }
+      .right_sidebar_wrap {
+        background: #f7f9f9;
+        margin-top: 20px;
+        border-radius: 20px;
+        min-height: 300px;
+        h1 {
+            padding: 15px;
+    
+            margin: 0;
+            font-size: 20px;
+    
+        }
+    }
+    }
+  }
+  

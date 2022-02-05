@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext, useRef } from 'react'
 import { Fragment } from 'react/cjs/react.production.min'
 import './ComposeTweetWidget.scss'
+import { SignedInUserContext } from '../../../contexts/SignedInUserDetails'
+import { ComposeTweetContext } from '../../../contexts/ComposeTweetContext'
 
 const composeInputOptions = [
   {
@@ -50,35 +52,75 @@ const composeInputOptions = [
 ]
 
 export default function ComposeTweetWidget () {
-  const [didType, setDidType] = useState(false)
+  const [draftedTweet, setDraftedTweet] = useState('');
+  const ctx = useContext(SignedInUserContext);
+  const tweetCtx = useContext(ComposeTweetContext);
+  const textRef = useRef();
 
   useEffect(() => {
-
-  }, [didType])
+   
+  }, [draftedTweet])
 
   function handleTweetTextChange () {
-    let inp = document.querySelector('.compose_tweets_textarea').innerHTML
-    if (inp == '' || inp.length == 0) {
-      setDidType(false)
-    } else {
-      setDidType(true)
-    }
+    setDraftedTweet(textRef.current.innerText);
+  }
+
+  function handleComposeTweet()
+  {
+    tweetCtx.handleTweetLoading(true);
+
+    const endpoint = `http://127.0.0.1/not_twitter_api/api/tweet/?userID=${ctx.user.id}&body=${draftedTweet}&method=CreateTweet`;
+    fetch(endpoint).then(response => response.json())
+    .then(item => {
+      
+      let tempObject = {
+        details: {
+          firstname: item.tweet.UserDetails.firstname,
+          lastname: item.tweet.UserDetails.lastname,
+          verified: false,
+          username: item.tweet.UserDetails.username,
+          userimage: item.tweet.UserDetails.profileImage
+        },
+        body: {
+          text: item.tweet.tweetBody.Body
+        },
+        metrics: {
+          comments: item.tweet.Metrics.comments,
+          retweets: item.tweet.Metrics.comments,
+          hearts: item.tweet.Metrics.comments,
+        }
+      };
+
+      tweetCtx.handleSetTweet(tempObject);
+      setDraftedTweet("");
+      textRef.current.innerText = '';
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    .finally(() => {
+      tweetCtx.handleTweetLoading(false);
+    })
+    
   }
 
   return (
     <>
-      <div class='compose_tweet_wrap'>
+      <div className={`compose_tweet_wrap`}>
         <div className='compose_tweet_input_area'>
           <div className='compose_tweet_image_wrap'>
-            <div className='compose_tweet_image'></div>
+            <div className='compose_tweet_image' style={{
+              backgroundImage: "url(" + ctx.user.details.profileImage.thumb + ")"
+            }}></div>
           </div>
 
           <div className='compose_tweet_details'>
-            {!didType && (
+            {draftedTweet.trim() == '' && (
               <div className='compose_tweet_before'>What's happening?</div>
             )}
             <div
               className='compose_tweets_textarea'
+              ref={textRef}
               onInput={handleTweetTextChange}
               contentEditable='true'
             ></div>
@@ -111,11 +153,16 @@ export default function ComposeTweetWidget () {
               })}
 
               <div className='compose_tweet_button compose_tweet_click_button'>
-                <button disabled={!didType} className={
+                <button 
+                onClick={handleComposeTweet} 
+                disabled={draftedTweet.trim() == '' || tweetCtx.isTweetLoading} 
+                className={
                         'blue-button ' +
-                        (!didType ? 'compose_tweet_button_deactivated' : 'compose_tweet_button_activated')
-                        }>
-                  Tweet
+                        (draftedTweet.trim() == '' ? 'compose_tweet_button_deactivated' : 'compose_tweet_button_activated')
+                        }
+                
+                >
+                  {tweetCtx.isTweetLoading ? 'Tweeting...' : 'Tweet' }
                 </button>
               </div>
             </div>

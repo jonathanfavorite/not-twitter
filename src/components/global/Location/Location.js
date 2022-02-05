@@ -7,7 +7,7 @@ export default function Location (props) {
     <>
       <div id='top_location_bar_sticky'>
         <div id='top_location_bar_main'>
-          <div className='top_location_text'>Home</div>
+          <div className='top_location_text'>{locationDetails}</div>
         </div>
       </div>
     </>

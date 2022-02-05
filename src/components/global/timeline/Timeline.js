@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import { useLayoutEffect } from "react";
+import { ComposeTweetContext } from "../../../contexts/ComposeTweetContext";
 import Loading from "../Loading/Loading";
 import Tweet from "../tweet/Tweet";
 import "./Timeline.scss";
@@ -6,7 +9,13 @@ import "./Timeline.scss";
 export default function Timeline() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
+  const composeContext = useContext(ComposeTweetContext);
 
+  function handleSetTweet(tweet)
+  {
+    setTweets([tweet, ...tweets]);
+
+  }
   const handleSetTweets = (args) => {
     let oldArr = tweets;
     for (let i = 0; i < args.length; i++) {
@@ -15,73 +24,62 @@ export default function Timeline() {
     setTweets(oldArr);
   };
 
-  const getAllTweets = async () => {
+  const timelineEndpoint = 'http://127.0.0.1/not_twitter_api/api/timeline/?userID=57';
+  const getTimeLine = async () => {
     let tempHoldingArr = [];
-    for (let i = 0; i < 10; i++) {
-      const response = await fetch("https://randomuser.me/api/?results=1");
+    const response = await fetch(timelineEndpoint);
       if (response.status >= 200 && response.status <= 299) {
         const data = await response.json();
-        if (data !== "") {
-          let fakeMetrics = {
-            comments: Math.floor(Math.random() * 10000),
-            retweets: Math.floor(Math.random() * 10000),
-            hearts: Math.floor(Math.random() * 10000),
-          };
-          let tempObject = {
-            details: {
-              firstname: data.results[0].name.first,
-              lastname: data.results[0].name.last,
-              verified: false,
-              username: data.results[0].login.username,
-              userimage: data.results[0].picture.thumbnail,
-            },
-            body: {
-              text: "",
-              image: "",
-            },
-            metrics: {
-              comments: fakeMetrics.comments,
-              retweets: fakeMetrics.retweets,
-              hearts: fakeMetrics.hearts,
-            },
-          };
-
-          let randomTextApi =
-            "https://hipsum.co/api/?type=hipster-centric&sentences=" +
-            Math.floor(Math.random() * 3) +
-            1;
-          const textResponse = await fetch(randomTextApi);
-          if (textResponse.status >= 200 && textResponse.status <= 299) {
-            const textResponseData = await textResponse.json();
-            if (textResponse) {
-              let resp = textResponseData;
-              if (textResponseData[0].length >= 180) {
-                resp = resp[0].substr(0, 180) + ".";
+        if (data.tweets) {
+          data.tweets.forEach((item) => {
+            
+            let tempObject = {
+              details: {
+                firstname: item.UserDetails.firstname,
+                lastname: item.UserDetails.lastname,
+                verified: false,
+                username: item.UserDetails.username,
+                userimage: item.UserDetails.profileImage
+              },
+              body: {
+                text: item.tweetBody.Body
+              },
+              metrics: {
+                comments: item.Metrics.comments,
+                retweets: item.Metrics.comments,
+                hearts: item.Metrics.comments,
               }
-              tempObject.body.text = resp;
+            };
 
-              let includePic =
-                Math.floor(Math.random() * 100) % 3 === 0 ? true : false;
-              if (includePic) {
-                let newWidth = Math.floor(Math.random() * 200) + 500;
-                
-                tempObject.body.image = `https://picsum.photos/650/400?random=1&t=${Date.now()}`;
-              }
-
-              tempHoldingArr.push(tempObject);
-            }
-          }
+            tempHoldingArr.push(tempObject);
+          });
         }
       }
-    }
+      else
+      {
+        console.log('error');
+      }
     handleSetTweets(tempHoldingArr);
     setLoading(false);
   };
-
   useEffect(() => {
     setLoading(true);
-    getAllTweets();
+    getTimeLine();
   }, []);
+
+  const AddComposedTweet = async() => {
+    handleSetTweet(composeContext.tweetObject);
+  }
+
+  useEffect(() => {
+    let isFinsihed = false;
+    if(composeContext.tweetObject != '')
+    {
+      AddComposedTweet();
+    }
+   
+   
+  },[composeContext.tweetObject])
 
   return (
     <>
@@ -91,6 +89,11 @@ export default function Timeline() {
         //   There are <span>{tweets.length}</span> items in <em>tweets</em>
         // </h1>
       }
+
+      {
+       // composeContext.tweetText.body.text && <h1>{composeContext.tweetText.body.text}</h1>
+      }
+
       {tweets &&
         tweets.map((item, index) => {
           return (

@@ -1,17 +1,25 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './SidebarUserWidget.scss';
+import { SignedInUserContext } from '../../../../contexts/SignedInUserDetails';
+
+
 
 export default function SidebarUserWidget() {
+
+    const ctx = useContext(SignedInUserContext);
+
     return (
         <>
         <div id='sidebar-userWidget'>
             <div className='userWidget-image'>
-                <div className='userWidget-image-box'>
+                <div className='userWidget-image-box' style={{
+                    backgroundImage: "url(" + ctx.user.details.profileImage.thumb + ")"
+                }}>
                 </div>
             </div>
             <div className='userWidget-details'>
-                <div className='userWidget-displayname'>Jonathan Favorite</div>
-                <div className='userWidget-username'>@jonathanfavorite</div>
+                <div className='userWidget-displayname'>{ctx.GetFullName()}</div>
+                <div className='userWidget-username'>{ctx.user.details.username}</div>
             </div>
             <div className='userWidget-more'>
                 <div className='userWidget-more-icon'>
