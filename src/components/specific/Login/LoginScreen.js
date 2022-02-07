@@ -2,6 +2,8 @@ import react from "react";
 import LogoSVG from "../../global/logo/LogoSVG";
 import ActionButton from "./login-screen/login-right/ActionButton/ActionButton";
 import "./LoginScreen.scss";
+import {Routes, Route, Link} from "react-router-dom";
+import LoginForm from "./login-screen/login-form/LoginForm";
 
 let footerList = [
   "About",
@@ -63,53 +65,52 @@ let signupButtons = [
   },
 ];
 
-export default function LoginScreen() {
+export default function LoginScreen(props) {
+  const {withForm, ...rest} = props;
   return (
     <>
       <div id="login_screen_wrap">
         <div id="login_screen_content">
-          <div class="login_screen_left">
-            <div class="login_screen_logo">
+          <div className="login_screen_left">
+            <div className="login_screen_logo">
               <LogoSVG className="login_screen_svg" fillColor="white" />
             </div>
           </div>
-          <div class="login_screen_right">
-            <div class="header">
-              <div class="header_logo">
+          <div className="login_screen_right">
+            <div className="header">
+              <div className="header_logo">
                 <LogoSVG fillColor="#1d9bf0" />
               </div>
               <h1>Happening now</h1>
               <h2>Join Twitter Today.</h2>
             </div>
-            <div class="samesize_group">
-              <div class="signup">
+            <div className="samesize_group">
+              <div className="signup">
                 {signupButtons.map((button, index) => {
                   return (
-                    <>
-                      <ActionButton icon={button.icon}>
+                      <ActionButton key={index} icon={button.icon}>
                         {button.text}
                       </ActionButton>
-                    </>
                   );
                 })}
               </div>
 
-              <div class="or">
+              <div className="or">
                 <span>or</span>
               </div>
 
-              <div class="signin_with_email">
+              <div className="signin_with_email">
                 <ActionButton>Sign up with phone or email</ActionButton>
               </div>
-              <div class="tos">
+              <div className="tos">
                 By signing up, you agree to the <a href="#">Terms of Service</a>{" "}
                 and <a href="#">Privacy Policy</a>, including{" "}
                 <a href="#">Cookie Use.</a>
               </div>
 
-              <div class="signin">
+              <div className="signin">
                 <b>Already have an account?</b>
-                <div class="signin_button">
+                <div className="signin_button">
                   <ActionButton>Sign in</ActionButton>
                 </div>
               </div>

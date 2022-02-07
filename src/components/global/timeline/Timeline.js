@@ -13,7 +13,9 @@ export default function Timeline() {
 
   function handleSetTweet(tweet)
   {
-    setTweets([tweet, ...tweets]);
+    let oldArr = tweets;
+    let insert = [tweet, ...oldArr];
+    setTweets(insert);
 
   }
   const handleSetTweets = (args) => {
@@ -22,6 +24,7 @@ export default function Timeline() {
       oldArr.push(args[i]);
     }
     setTweets(oldArr);
+    
   };
 
   const timelineEndpoint = 'http://127.0.0.1/not_twitter_api/api/timeline/?userID=57';
@@ -32,8 +35,8 @@ export default function Timeline() {
         const data = await response.json();
         if (data.tweets) {
           data.tweets.forEach((item) => {
-            
             let tempObject = {
+              id: item.tweetID,
               details: {
                 firstname: item.UserDetails.firstname,
                 lastname: item.UserDetails.lastname,
@@ -44,13 +47,13 @@ export default function Timeline() {
               body: {
                 text: item.tweetBody.Body
               },
+              justPosted:false,
               metrics: {
-                comments: item.Metrics.comments,
-                retweets: item.Metrics.comments,
-                hearts: item.Metrics.comments,
+                comments: item.Metrics.Comments,
+                retweets: item.Metrics.Comments,
+                hearts: item.Metrics.Comments,
               }
-            };
-
+            }; 
             tempHoldingArr.push(tempObject);
           });
         }
@@ -76,32 +79,25 @@ export default function Timeline() {
     if(composeContext.tweetObject != '')
     {
       AddComposedTweet();
+
     }
-   
-   
   },[composeContext.tweetObject])
 
   return (
     <>
       {loading && <Loading />}
-      {
-        // <h1>
-        //   There are <span>{tweets.length}</span> items in <em>tweets</em>
-        // </h1>
-      }
-
-      {
-       // composeContext.tweetText.body.text && <h1>{composeContext.tweetText.body.text}</h1>
-      }
 
       {tweets &&
         tweets.map((item, index) => {
+          
           return (
             <Tweet
-              key={index}
+              key={item.id}
               details={item.details}
               metrics={item.metrics}
               body={item.body}
+              customClassName={item.justPosted ? 'fadeIn' : ''}
+              justPosted={item.justPosted}
             />
           );
         })}

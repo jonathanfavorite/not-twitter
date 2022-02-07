@@ -12,10 +12,10 @@ export default function Footer() {
     ]
     return (
         <>
-            <div class='footer'>
+            <div className='footer'>
                 {
-                    footerItems.map(item => {
-                        return <a href={item.url}>{item.text}</a>
+                    footerItems.map((item, index) => {
+                        return <a key={index} href={item.url}>{item.text}</a>
                     })
                 }
                 <div>© 2022 Not Twitter, Inc.</div>

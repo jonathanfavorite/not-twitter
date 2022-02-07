@@ -4,8 +4,8 @@ export default function ActionButton(props) {
   const { icon, children, onClick } = props;
   return (
     <>
-      <div class="action_button" onClick={onClick}>
-          {icon && <div class="action_image">{icon}</div> }
+      <div className="action_button" onClick={onClick}>
+          {icon && <div className="action_image">{icon}</div> }
           <span>{children}</span>
       </div>
     </>

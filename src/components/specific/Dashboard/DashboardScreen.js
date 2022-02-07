@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useEffect } from "react";
 import Footer from "../../global/footer/Footer";
 import Sidebar from "../../global/sidebar/Sidebar";
 import StickySearch from "../../global/sticky_search/StickySearch";
@@ -7,6 +7,11 @@ import WhoToFollow from "../../global/who_to_follow/WhoToFollow";
 import Dashboard from "../../../pages/Dashboard/Dashboard";
 import './DashboardScreen.scss';
 export default function DashboardScreen() {
+
+  useEffect(() => {
+
+  },[]);
+
   return (
     <>
       <div id="master_container">

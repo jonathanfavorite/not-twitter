@@ -22,8 +22,7 @@ function ComposeTweetProvider(props)
         tweetObject: tweet,
         isTweetLoading: tweetLoading,
         handleTweetLoading: handleTweetLoading,
-        handleSetTweet: handleSetTweet,
-        clearTweets: clearTweet
+        handleSetTweet: handleSetTweet
     }
     return <>
         <ComposeTweetContext.Provider value={contextList}>

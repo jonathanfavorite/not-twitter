@@ -1,5 +1,17 @@
 $tabletWidth: 840px;
 $phoneWidth: 500px;
+.fadeIn {
+  opacity: 0;
+  animation: animateIn 1s ease-in-out forwards;
+}
+@keyframes animateIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .tweet {
   display: -webkit-box;
@@ -21,6 +33,7 @@ $phoneWidth: 500px;
       height: 50px;
       border-radius: 50px;
       background-color: #efefef;
+      background-size:cover;
     }
   }
   .tweet_right {

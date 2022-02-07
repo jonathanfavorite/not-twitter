@@ -89,7 +89,7 @@ export default function WhatsHappening () {
     let response = await fetch(endpoint)
     if (response.status >= 200 && response.status <= 299) {
       let data = await response.json()
-      console.log(data)
+
       for (let i = 0; i < data.results.length; i++) {
           
         // we need to get the time since the article was published
@@ -123,7 +123,6 @@ export default function WhatsHappening () {
         }
         listOfItems.push(tempItem);
 
-        console.log(data.results[i])
         if (i >= 2) {
             break;
         }

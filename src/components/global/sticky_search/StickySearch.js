@@ -19,7 +19,7 @@ export default function StickySearch () {
         <div id='top_search_box' 
             onBlur={handleSearhBoxBlur} 
             onFocus={handleSearchBoxFocus} 
-            useRef={searchBoxRef}
+            useref={searchBoxRef}
             className={
               (hasFocused) ? 'blue-border white-background' : ''
             }

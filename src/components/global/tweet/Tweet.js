@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import "./Tweet.scss";
 
 
@@ -32,12 +32,15 @@ function abbreviateNumber(value) {
 
 
 export default function Tweet(props) {
-  const { details, body, metrics } = props;
-  const showFadeIn = props.showFadeIn ? 'tweet_fadein' : '';
+  const { details, body, metrics, customClassName } = props;
 
+  const [cname, setCname] = useState('');
+  useEffect(() => {
+    setCname(customClassName);
+  },[customClassName])
   return (
     <>
-      <div className={`tweet ${showFadeIn}`}>
+      <div className={`tweet ${cname}`} onAnimationEnd={() => setCname('')}>
         <div className="tweet_left">
           {details.userimage && (
             <>
@@ -52,7 +55,7 @@ export default function Tweet(props) {
         </div>
         <div className="tweet_right">
           <div className="tweet_desc">
-            <div className="tweet_desc_left">
+            <div className="tweet_desc_left"> 
               <div className="tweet_name">
                 <a href="#">
                   {details.firstname} {details.lastname}
@@ -76,7 +79,7 @@ export default function Tweet(props) {
               </div>
             </div>
             <div className="tweet_desc_right">
-              <div class="tweet_desc_elipses_wrap">
+              <div className="tweet_desc_elipses_wrap">
                 <div className="tweet_desc_elipses">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <g>
