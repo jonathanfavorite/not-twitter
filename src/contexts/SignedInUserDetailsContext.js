@@ -1,70 +1,49 @@
 import React, {useState, createContext} from 'react';
 import { useEffect } from 'react';
 
-
 const SignedInUserContext = createContext();
-
-
-
 
 function SignedInUserProvider(props) {
 
-    const [isCached, setIsCached] = useState(false);
-    const [userLoaded, setUserLoaded] = useState(false);
-    const [userDetails, setUserDetails] = useState(null);
-
+    const [user, setUser] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+ 
+    const login = (user) => {
+   
+        setUser(user);
+        setIsLoggedIn(true);
+      };
     
+      const logout = () => {
+    
+        localStorage.removeItem('user');
+    
+        setUser(null);
+        setIsLoggedIn(false);
+      };
+    
+      const checkLoggedIn = async () => {
+        let user = localStorage.getItem('user');
+        if (user) {
+            login(JSON.parse(user));
+        }
+      };
 
-//   useEffect(() => {
-//     const myPerson = {
-//         id: 57,
-//         name: {
-//             first: "Jonathan",
-//             last: "Favorite"
-//         },
-//         social: {
-//             email:"jonathanfavorite@hotmail.com",
-//             phone:2392108816
-//         },
-//         details: {
-//             username: "@jonathanfavorite",
-//             profileImage: {
-//                 thumb: "https://randomuser.me/api/portraits/thumb/men/9.jpg",
-//                 medium: "https://randomuser.me/api/portraits/med/men/9.jpg",
-//                 large: "https://randomuser.me/api/portraits/men/9.jpg"
-//             }
-//         }
-        
-//     }
-
-//     setUserDetails(myPerson);
-//   }, []);    
-
-
-    function handleSetIsCached(bool) {
-        setIsCached(bool);
-    }
-    function handleSetUserLoaded(bool) {
-        setUserLoaded(bool);
+      function GetFullName()
+      {
+          return `${user.name.first} ${user.name.last}`;
       }
-
-    function handleSetUserDetails(user)
-    {
-        setUserDetails(user);
-    }
-    function GetFullName()
-    {
-        return `${userDetails.name.first} ${userDetails.name.last}`;
-    }
+    
+      useEffect(() => {
+        checkLoggedIn();
+      },[]);
 
     const contextList = {
-        user: userDetails,
-        GetFullName,
-        SetUser: handleSetUserDetails,
-        SetCached: handleSetIsCached,
-        IsCached: isCached,
-        userLoaded,
-        handleSetUserLoaded
+        user,
+        isLoggedIn,
+        login,
+        logout,
+        GetFullName
     }
 
     return <>
@@ -74,4 +53,5 @@ function SignedInUserProvider(props) {
     </>
 }
 
-export {SignedInUserContext, SignedInUserProvider}
+export {SignedInUserContext, SignedInUserProvider};
+

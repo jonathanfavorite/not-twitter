@@ -111,7 +111,7 @@ export default function LoginScreen(props) {
               <div className="signin">
                 <b>Already have an account?</b>
                 <div className="signin_button">
-                  <ActionButton>Sign in</ActionButton>
+                  <Link to='/login/form/'><ActionButton>Sign in</ActionButton></Link>
                 </div>
               </div>
             </div>

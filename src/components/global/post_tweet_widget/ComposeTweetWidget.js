@@ -90,9 +90,9 @@ export default function ComposeTweetWidget () {
           text: item.tweet.tweetBody.Body
         },
         metrics: {
-          comments: item.tweet.Metrics.comments,
-          retweets: item.tweet.Metrics.comments,
-          hearts: item.tweet.Metrics.comments,
+          comments: 0,
+          retweets: 0,
+          hearts: 0,
         }
       };
 

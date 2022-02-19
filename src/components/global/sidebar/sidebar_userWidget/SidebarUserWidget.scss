@@ -4,6 +4,7 @@
     padding:10px 20px;
     margin-right:20px;
     border-radius: 40px;
+    position:relative;
     margin-bottom:20px;
     align-items: center;
     transition: all 100ms ease-in-out;
@@ -40,6 +41,75 @@
         .userWidget-more-icon {
             position:relative;
             left:5px;
+        }
+    }
+}
+
+.no-hover {
+    &:hover {
+        background:none !important;
+    }
+}
+
+.sidebar-details-widget_main {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex:100%;
+}
+
+#sidebar-details-user-widget {
+    position: absolute;
+
+    border-radius: 20px;
+    left:0;
+    background:white;
+    width:120%;
+    cursor: default;
+    bottom:70px;
+    box-shadow: 0px 0px 5px #ccc;
+    .sidebar-details-widget {
+        display:flex;
+        padding:20px;
+        border-bottom:1px solid #efefef;
+    }
+    .sidebar-details-action-links {
+        display:flex;
+        flex-direction: row;
+        
+        .sidebar-details-link {
+          
+            flex:100%;
+            a {
+                display:block;
+                padding:20px;
+                color:rgb(15, 20, 25);
+                text-decoration: none;
+                &:hover {
+                    background:#f7f9f9;
+                }
+                
+               
+            }
+            
+            &:last-child {
+                a {
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+                }
+            }
+        }
+    }
+    .arrow {
+        position: absolute;
+        width:20px;
+        height:20px;
+        transform: rotate(180deg);
+        left:50%;
+        margin-left: -10px;
+        margin-top:-7px;
+        svg {
+            filter: drop-shadow(0px -5px 5px #ccc);
         }
     }
 }

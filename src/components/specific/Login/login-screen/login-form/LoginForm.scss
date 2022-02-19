@@ -157,6 +157,9 @@ $phoneWidth: 500px;
     .login_form_login_button {
         margin-top:10px;
         button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
             text-align: center;
             outline: none;
             border:0;
@@ -171,6 +174,21 @@ $phoneWidth: 500px;
             font-weight: bold;
             &:hover {
                 background-color: #272c30;
+            }
+
+            .login_loading {
+              display:block;
+              margin-right: 10px;
+              position: relative;
+              top:2px;
+              .loading_wrap {
+                padding:0 !important;
+
+                .lds-ring {
+                  width:20px;
+                  height:20px;
+                }
+              }
             }
         }
         .forgot_button {
@@ -195,6 +213,17 @@ $phoneWidth: 500px;
             text-decoration: none;
         }
     }
+
+    .login_warning {
+        margin-bottom:10px;
+        font-size:15px;
+        color:red;  
+        opacity: 0;
+    }
+    .login_warning_opacity {
+      opacity: 1;
+    }
+
   }
   }
 }

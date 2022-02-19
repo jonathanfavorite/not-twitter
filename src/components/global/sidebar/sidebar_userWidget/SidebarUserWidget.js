@@ -1,32 +1,51 @@
-import React, {useState, useEffect, useContext} from 'react';
-import './SidebarUserWidget.scss';
-import { SignedInUserContext } from '../../../../contexts/SignedInUserDetailsContext';
-
-
+import React, { useState, useEffect, useRef, useContext } from "react";
+import "./SidebarUserWidget.scss";
+import { SignedInUserContext } from "../../../../contexts/SignedInUserDetailsContext";
+import SideBarUserWidgetDetails from "./SideBarUserWidgetDetails/SideBarUserWidgetDetails";
+import { Link } from "react-router-dom";
 
 export default function SidebarUserWidget() {
+  const ctx = useContext(SignedInUserContext);
+  const [modalOpen, setModalOpen] = useState(false);
+  const popupRef = useRef();
+  const widgetMainRef = useRef();
 
-    const ctx = useContext(SignedInUserContext);
+  document.addEventListener("mousedown", handleOnBlur);
 
-    return (
-        <>
-        <div id='sidebar-userWidget'>
-            <div className='userWidget-image'>
-                <div className='userWidget-image-box' style={{
-                    backgroundImage: "url(" + ctx.user.details.profileImage.thumb + ")"
-                }}>
-                </div>
+  function handleOnBlur(event) {
+    if (popupRef.current && modalOpen && !popupRef.current.contains(event.target)) {
+      setModalOpen(false);
+    }
+  }
+
+  return (
+    <>
+      <div id="sidebar-userWidget" className={
+      modalOpen ? 'no-hover' : ''
+      }>
+      {modalOpen && 
+        <div id="sidebar-details-user-widget" ref={popupRef}>
+          <div class="sidebar-details-widget" >
+            <SideBarUserWidgetDetails ctx={ctx} />
+          </div>
+          <div class="sidebar-details-action-links">
+            <div class="sidebar-details-link">
+              <Link to="/logout">Log out {ctx.user.details.username}</Link>
             </div>
-            <div className='userWidget-details'>
-                <div className='userWidget-displayname'>{ctx.GetFullName()}</div>
-                <div className='userWidget-username'>{ctx.user.details.username}</div>
-            </div>
-            <div className='userWidget-more'>
-                <div className='userWidget-more-icon'>
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><g><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></g></svg>
-                </div>
-            </div>
+          </div>
+          <div class="arrow">
+            <svg fill="#fff" viewBox="0 0 24 24" aria-hidden="true">
+              <g>
+                <path d="M12.538 6.478c-.14-.146-.335-.228-.538-.228s-.396.082-.538.228l-9.252 9.53c-.21.217-.27.538-.152.815.117.277.39.458.69.458h18.5c.302 0 .573-.18.69-.457.118-.277.058-.598-.152-.814l-9.248-9.532z"></path>
+              </g>
+            </svg>
+          </div>
         </div>
-        </>
-    );
+}
+        <div class="sidebar-details-widget_main" onClick={() => {setModalOpen(open => !modalOpen)}} ref={widgetMainRef}>
+          <SideBarUserWidgetDetails ctx={ctx} displayElipses={true} />
+        </div>
+      </div>
+    </>
+  );
 }
