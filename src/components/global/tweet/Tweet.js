@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect, useContext, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Tweet.scss";
-
+import {AppSettingsContext} from "../../../contexts/AppSettingsContextWrapper";
 
 function abbreviateNumber(value) {
   var newValue = value;
@@ -35,6 +35,7 @@ function abbreviateNumber(value) {
 export default function Tweet(props) {
   const { details, body, metrics, customClassName } = props;
 
+  const settings = useContext(AppSettingsContext);
   const [cname, setCname] = useState('');
   useEffect(() => {
     setCname(customClassName);
@@ -49,7 +50,7 @@ export default function Tweet(props) {
               <div
                 className="tweet_userimg"
                 style={{
-                  backgroundImage: "url(" + details.userimage + ")",
+                  backgroundImage: `url("${settings.mediaDirectory} ${details.userimage}")`,
                 }}
               ></div>
             </>
