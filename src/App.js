@@ -9,14 +9,13 @@ import { SignedInUserContext } from "./contexts/SignedInUserDetailsContext";
 import Loading from "./components/global/Loading/Loading";
 import LoginForm from "./components/specific/Login/login-screen/login-form/LoginForm";
 import LogoutFunction from "./auth/LogoutFunction";
-
-
+import ProfileScreen from "./components/specific/Profile/ProfileScreen";
+import { ProfileDetailsProvider } from "./contexts/ProfileDetailsContext";
+import { AppSettingsContext, AppSettingsContextProvider } from "./contexts/AppSettingsContextWrapper";
 const App = () => {
   const signedInContext = useContext(SignedInUserContext);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  console.log(signedInContext.user);
 
   return (
     <>
@@ -24,13 +23,17 @@ const App = () => {
           <Routes>
            <Route
               path="/"
-              element={<>
-                <SignInWrapper>
-                  <DashboardScreen />
-                </SignInWrapper>
-                </>
+              element={<><SignInWrapper><DashboardScreen /></SignInWrapper></>
               }
             />
+            <Route path="/:username" element={
+                <SignInWrapper>
+                  <ProfileDetailsProvider>
+                    <ProfileScreen />
+                  </ProfileDetailsProvider>
+                </SignInWrapper>
+                } 
+                />
             <Route path="/login/form" element={<LoginForm />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/logout" element={<LogoutFunction />} />
@@ -42,17 +45,15 @@ const App = () => {
 }
 
 export default function AppWrapper() {
-
-  useEffect(() => {
-
-  },[]);
-
+  const settingsContext = useContext(AppSettingsContext);
   return (
 <>
 
+<AppSettingsContextProvider>
     <SignedInUserProvider>
       <App />
       </SignedInUserProvider>
+</AppSettingsContextProvider>
 </>
       );
       

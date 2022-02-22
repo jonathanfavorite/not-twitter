@@ -7,12 +7,13 @@ $phoneWidth: 500px;
      }
   .compose_tweet_input_area {
     display: flex;
-    flex-wrap: wrap;
+    
     padding: 10px 20px;
     border-bottom: 1px solid #eff3f4;
     padding-bottom: 20px;
     justify-content: space-between;
     .compose_tweet_image_wrap {
+      padding-right:20px;
       .compose_tweet_image {
         width: 48px;
         height: 48px;
@@ -22,15 +23,15 @@ $phoneWidth: 500px;
       }
     }
     .compose_tweet_details {
-      padding-left: 20px;
+
       padding-top: 15px;
       position: relative;
       flex-grow: 1;
-      flex-wrap: wrap;
+    
       flex-direction: column;
       .compose_tweet_before {
         position: absolute;
-        left: 20px;
+       
         font-size: 20px;
         top: 15px;
         color: rgb(107, 107, 107);
@@ -81,12 +82,13 @@ $phoneWidth: 500px;
         cursor: pointer;
       }
       .compose_tweet_button_deactivated {
-        background: #8ecdf7;
+        background: #54ede1;
+        color:#fff;
         cursor: default;
       }
       .compose_tweet_button_activated {
         &:hover {
-          background: rgba(26, 140, 216, 255);
+          background: #1ad1c2;
         }
       }
     }

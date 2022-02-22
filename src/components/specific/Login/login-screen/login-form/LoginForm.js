@@ -5,9 +5,10 @@ import LogoSVG from "../../../../global/logo/LogoSVG";
 import Loading from "../../../../global/Loading/Loading";
 import { SignedInUserContext } from "../../../../../contexts/SignedInUserDetailsContext";
 import { useNavigate  } from "react-router-dom";
-import { click } from "@testing-library/user-event/dist/click";
+import { AppSettingsContext } from "../../../../../contexts/AppSettingsContextWrapper";
 export default function LoginForm(props) {
 
+  const settings = useContext(AppSettingsContext);
   const signedInContext = useContext(SignedInUserContext);
   const navigate = useNavigate();
     const usernameRef = useRef();
@@ -52,13 +53,13 @@ export default function LoginForm(props) {
       formData.append('password', bodyParams.password);
 
       //console.log(bodyParams);
-        await fetch(`http://127.0.0.1/not_twitter_api/api/auth/?method=login`, {
+        await fetch(`${settings.endpointPrefix}/auth/?method=login`, {
             method: 'POST',
             body: formData
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            //console.log(data);
             if(data.usernameNotFound)
             {
               setLoginWarning(true);
@@ -105,7 +106,7 @@ export default function LoginForm(props) {
             }
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
         });
         setLoginLoading(false);
     };
@@ -132,14 +133,14 @@ export default function LoginForm(props) {
             </div>
             <div className="logo_area">
               <div className="logo_image">
-               <LogoSVG fillColor='rgb(29, 155, 240)' />
+               <LogoSVG fillColor='#1ad1c2' />
               </div>
             </div>
             <div className='empty_space'></div>
           </div>
           <div className="login_form_body">
               <div className='maxwidth'>
-            <h2>Sign in to Twitter</h2>
+            <h2>Sign in to TeamSpeak</h2>
             <div className={`login_warning${loginWarning ? ' login_warning_opacity' : ''}`}>
               <div className='login_warning_text'>{loginWarningText}</div>
             </div>

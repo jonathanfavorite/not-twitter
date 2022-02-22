@@ -5,7 +5,7 @@ export default function TweetButton() {
     return (
         <>
             <div className='large_tweet_button'>
-                <a href='#' className='blue-button'>Tweet</a>
+                <a href='#' className='blue-button'>Speak</a>
             </div>
         </>
     );

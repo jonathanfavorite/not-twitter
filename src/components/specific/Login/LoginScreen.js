@@ -23,7 +23,7 @@ let footerList = [
   "Developers",
   "Directory",
   "Settings",
-  "© 2022 Twitter, Inc.",
+  "© 2022 TeamSpeak, Inc.",
 ];
 
 let signupButtons = [
@@ -79,10 +79,10 @@ export default function LoginScreen(props) {
           <div className="login_screen_right">
             <div className="header">
               <div className="header_logo">
-                <LogoSVG fillColor="#1d9bf0" />
+                <LogoSVG fillColor="#1ad1c2" />
               </div>
               <h1>Happening now</h1>
-              <h2>Join Twitter Today.</h2>
+              <h2>Join TeamSpeak Today.</h2>
             </div>
             <div className="samesize_group">
               <div className="signup">

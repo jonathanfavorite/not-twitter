@@ -15,6 +15,7 @@
             height:50px;
             border-radius: 50px;
             background:rgb(15, 20, 25);
+            background-size: cover;
         }
     }
     .wtf_desc {
@@ -43,7 +44,7 @@
     .wtf_follow_wrap {
         flex-grow: 1;
         text-align: right;
-        a {
+        span {
             background:#000;
             color:#fff;
             text-decoration: none;
@@ -51,6 +52,34 @@
             font-size:13px;
             padding:10px 25px;
             border-radius: 20px;
+            &:hover {
+                background:#1ad1c2;
+                .little_spinner
+                {
+                    .lds-ring div {
+                        border: 3px solid #fff;
+                        border-color: #fff transparent transparent transparent;
+                    }
+                }
+            }
+            .little_spinner {
+                display:inline-block;
+                width:15px;
+                height:15px;
+                margin-right:10px;
+                position: relative;
+                top:2px;
+                .loading_wrap {
+                    width:15px;
+                    padding:0;
+                    height:15px;
+                    .lds-ring {
+                        width:15px;
+                        height:15px;
+                
+                    }
+                }
+            }
         }
     }
 }

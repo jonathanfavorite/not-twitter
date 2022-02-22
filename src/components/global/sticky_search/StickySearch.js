@@ -27,7 +27,7 @@ export default function StickySearch () {
           <div className='top_search_indi icon_wrap'>
               <div className='top_search_icon'>
             <svg
-              fill={hasFocused ? 'rgb(29, 155, 240)' : 'rgba(83,100,113,255)'}
+              fill={hasFocused ? '#1ad1c2' : 'rgba(83,100,113,255)'}
               viewBox='0 0 24 24'
               aria-hidden='true'
             >
@@ -39,7 +39,7 @@ export default function StickySearch () {
           </div>
 
             <div className='top_search_indi'>
-                <input type='text' placeholder='Search Twitter' />
+                <input type='text' placeholder='Search TeamSpeak' />
             </div>
 
         </div>

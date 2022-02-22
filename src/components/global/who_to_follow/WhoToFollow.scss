@@ -5,12 +5,27 @@
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             a {
-                color: rgb(29, 155, 240);
+                color: #1ad1c2;
                 text-decoration: none;
             }
             &:hover {
                 background: #eff1f1;
                 cursor: pointer;
             }
+           
+           
         }
+        .slowfade {
+            animation-name: slowfade;
+            animation-duration: 0.5s;
+            animation-iteration-count: 1;
+         }
+}
+@keyframes slowfade {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

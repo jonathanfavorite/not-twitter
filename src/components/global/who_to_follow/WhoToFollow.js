@@ -1,13 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import Loading from '../Loading/Loading';
 import './WhoToFollow.scss';
 import WhoToFollowListItem from './WhoToFollowListItem/WhoToFollowListItem';
+import { SignedInUserContext } from '../../../contexts/SignedInUserDetailsContext';
+import { AppSettingsContext } from '../../../contexts/AppSettingsContextWrapper';
 
 export default function WhoToFollow() {
     const [loading, setLoading] = useState(true);
     const [whoToFollow, setWhoToFollow] = useState([]);
-
-    const api = 'https://randomuser.me/api/?results=3';
+    const userContext = useContext(SignedInUserContext);
+    const numberOfFollowersToShow = 5;
+    const apiResults = 20;
+    const settings = useContext(AppSettingsContext);
+    const api = `${settings.endpointPrefix}/user/?method=WhoToFollowForUserID&limit=${apiResults}&userID=${userContext.user.id}`;
 
     function handleSetWhoToFollow(arr)
     {
@@ -26,14 +31,15 @@ export default function WhoToFollow() {
         {
             const data = await response.json();
 
-            for(let i = 0; i < data.results.length; i++)
+            for(let i = 0; i < data.response.length; i++)
             {
                 //console.log(data.results[i]);
                 let holdingObject = {
-                    "firstname": data.results[i].name.first,
-                    "lastname": data.results[i].name.last,
-                    "username": data.results[i].login.username,
-                    "image": data.results[i].picture.thumbnail
+                    "id": data.response[i].userID,
+                    "firstname": data.response[i].firstname,
+                    "lastname": data.response[i].lastname,
+                    "username": data.response[i].username,
+                    "image": `${settings.mediaDirectory}/profile/thumbnail/${data.response[i].profileImage}`
                 }
                 tempArr.push(holdingObject);
             }
@@ -41,7 +47,7 @@ export default function WhoToFollow() {
         }
         else
         {
-            console.log("error");
+            console.log("error in who to follow");
         }
         setLoading(false);
     }
@@ -50,6 +56,19 @@ export default function WhoToFollow() {
         GetWhoToFollow();
         //setLoading(false);
     }, []);
+
+    function handleOnChange(id)
+    {
+        let oldArr = whoToFollow.filter(item => {
+            return item.id !== id;
+        });
+      
+        if(oldArr.length !== 0)
+        {
+            oldArr.unshift(oldArr.pop())
+        }
+        setWhoToFollow(oldArr);
+    }
 
     return (
         <>
@@ -60,12 +79,12 @@ export default function WhoToFollow() {
                     {loading && <Loading />}
                     {
                        
-                        whoToFollow.map((item, index) => {
-                            return <WhoToFollowListItem key={index} details={item} />
+                        whoToFollow.slice(0, numberOfFollowersToShow).map((item, index) => {
+                            return <WhoToFollowListItem handleChange={handleOnChange} key={index} details={item} />
                         })
                     }
                     <div  className='wtf_list_item wtf_show_more'>
-                            <a href='#' className=''>Show more</a>
+                            <a className=''>Show more</a>
                         </div>
                     
                 </div>

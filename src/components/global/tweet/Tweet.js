@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Tweet.scss";
 
 
@@ -42,6 +43,7 @@ export default function Tweet(props) {
     <>
       <div className={`tweet ${cname}`} onAnimationEnd={() => setCname('')}>
         <div className="tweet_left">
+          <Link to={`/${details.username}`}>
           {details.userimage && (
             <>
               <div
@@ -52,18 +54,19 @@ export default function Tweet(props) {
               ></div>
             </>
           )}
+          </Link>
         </div>
         <div className="tweet_right">
           <div className="tweet_desc">
             <div className="tweet_desc_left"> 
               <div className="tweet_name">
-                <a href="#">
+              <Link to={`/${details.username}`}>
                   {details.firstname} {details.lastname}
-                </a>
+                </Link>
               </div>
               <div className="tweet_verified">
                 <svg
-                  fill="rgb(29, 155, 240)"
+                  fill="#1ad1c2"
                   viewBox="0 0 24 24"
                   aria-label="Verified account">
                   <g>
@@ -72,7 +75,7 @@ export default function Tweet(props) {
                 </svg>
               </div>
               <div className="tweet_username">
-                <a href="#">@{details.username}</a>
+              <Link to={`/${details.username}`}>@{details.username}</Link>
               </div>
               <div className="tweet_elapsedtime">
                 &nbsp; <span className="singlepoint"></span>· <span>1h</span>

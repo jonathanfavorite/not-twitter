@@ -5,7 +5,7 @@ export default function VerifiedIcon(props) {
     let {fill} = props;
     if(!fill)
     {
-        fill = "rgb(29, 155, 240)";  
+        fill = "#1ad1c2";  
     }
     return (
         <>

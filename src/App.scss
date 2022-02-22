@@ -21,7 +21,7 @@ body {
 }
 
 a {
-  color:#1d9bf0;
+  color:#1ad1c2;
   &:hover {
     text-decoration: underline;
   }
@@ -32,9 +32,13 @@ a {
     Big blue (not <button> button)
 */
 .blue-button {
-    background:rgb(29, 155, 240);
+    // background:#1ad1c2;
+    background:#1ad1c2;
     color:#fff;
     text-decoration: none;
     font-weight: bold;
+    &:hover {
+      background: #8de8e0;
+    }
 }
 

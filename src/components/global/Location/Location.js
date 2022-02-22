@@ -1,15 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import './Location.scss'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Location.scss";
 
-export default function Location (props) {
-  const { locationDetails } = props
+export default function Location(props) {
+  const { locationDetails, backButtonLocation } = props;
   return (
     <>
-      <div id='top_location_bar_sticky'>
-        <div id='top_location_bar_main'>
-          <div className='top_location_text'>{locationDetails}</div>
+      <div id="top_location_bar_sticky">
+        <div id="top_location_bar_main">
+          {backButtonLocation && <>
+          <div className="top_location_back_button">
+          <Link to={backButtonLocation}>
+            <div className="_back_button_icon">
+             
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <g>
+                    <path d="M20 11H7.414l4.293-4.293c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0l-6 6c-.39.39-.39 1.023 0 1.414l6 6c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L7.414 13H20c.553 0 1-.447 1-1s-.447-1-1-1z"></path>
+                  </g>
+                </svg>
+              
+            </div>
+            </Link>
+          </div>
+          </>}
+          <div className="top_location_text">{locationDetails}</div>
         </div>
       </div>
     </>
-  )
+  );
 }

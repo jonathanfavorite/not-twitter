@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useContext } from "react";
-import { useLayoutEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { ComposeTweetContext } from "../../../contexts/ComposeTweetContext";
 import Loading from "../Loading/Loading";
 import Tweet from "../tweet/Tweet";
 import "./Timeline.scss";
+import { SignedInUserContext } from "../../../contexts/SignedInUserDetailsContext";
+import { AppSettingsContext } from "../../../contexts/AppSettingsContextWrapper";
 
 export default function Timeline() {
   const [tweets, setTweets] = useState([]);
   const [loading, setLoading] = useState(true);
   const composeContext = useContext(ComposeTweetContext);
+  const ctx = useContext(SignedInUserContext);
 
   function handleSetTweet(tweet)
   {
@@ -27,7 +28,9 @@ export default function Timeline() {
     
   };
 
-  const timelineEndpoint = 'http://127.0.0.1/not_twitter_api/api/timeline/?userID=57';
+  const settingsContext = useContext(AppSettingsContext);
+
+  const timelineEndpoint = `${settingsContext.endpointPrefix}/timeline/?userID=${ctx.user.id}`;
   const getTimeLine = async () => {
     let tempHoldingArr = [];
     const response = await fetch(timelineEndpoint);

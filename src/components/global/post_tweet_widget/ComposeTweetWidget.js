@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef, Fragment } from 'react'
 import './ComposeTweetWidget.scss'
 import { SignedInUserContext } from '../../../contexts/SignedInUserDetailsContext'
 import { ComposeTweetContext } from '../../../contexts/ComposeTweetContext'
-
+import { AppSettingsContext } from '../../../contexts/AppSettingsContextWrapper'
 const composeInputOptions = [
   {
     keyname: 'Media',
@@ -35,12 +35,12 @@ const composeInputOptions = [
     ],
     circles: [
       <circle key={'circle1'}
-        fill='rgb(29, 155, 240)'
+        fill='#1ad1c2'
         cx='14.738'
         cy='9.458'
         r='1.478'
       ></circle>,
-      <circle key={'circle2'} fill='rgb(29, 155, 240)' cx='9.262' cy='9.458' r='1.478'></circle>
+      <circle key={'circle2'} fill='#1ad1c2' cx='9.262' cy='9.458' r='1.478'></circle>
     ] 
   },
   {
@@ -60,7 +60,7 @@ export default function ComposeTweetWidget () {
   const ctx = useContext(SignedInUserContext);
   const tweetCtx = useContext(ComposeTweetContext);
   const textRef = useRef();
-
+  const settings = useContext(AppSettingsContext);
   useEffect(() => {
    
   }, [draftedTweet])
@@ -73,7 +73,7 @@ export default function ComposeTweetWidget () {
   {
     tweetCtx.handleTweetLoading(true);
 
-    const endpoint = `http://127.0.0.1/not_twitter_api/api/tweet/?userID=${ctx.user.id}&body=${draftedTweet}&method=CreateTweet`;
+    const endpoint = `${settings.endpointPrefix}/tweet/?userID=${ctx.user.id}&body=${draftedTweet}&method=CreateTweet`;
     fetch(endpoint).then(response => response.json())
     .then(item => {
       let tempObject = {
@@ -140,7 +140,7 @@ export default function ComposeTweetWidget () {
                         <g>
                           {item.imagePath.map((path, index) => {
                             return (
-                                <Fragment key={index}><path fill='rgb(29, 155, 240)' d={path}></path></Fragment>
+                                <Fragment key={index}><path fill='#1ad1c2' d={path}></path></Fragment>
                             )
                           })}
                           {item.circles &&
@@ -165,7 +165,7 @@ export default function ComposeTweetWidget () {
                         }
                 
                 >
-                  {tweetCtx.isTweetLoading ? 'Tweeting...' : 'Tweet' }
+                  {tweetCtx.isTweetLoading ? 'Speaking...' : 'Speak' }
                 </button>
               </div>
             </div>

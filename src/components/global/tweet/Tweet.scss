@@ -2,7 +2,7 @@ $tabletWidth: 840px;
 $phoneWidth: 500px;
 .fadeIn {
   opacity: 0;
-  animation: animateIn 1s ease-in-out forwards;
+  animation: animateIn 0.5s ease-in-out forwards;
 }
 @keyframes animateIn {
   0% {
@@ -163,7 +163,7 @@ $phoneWidth: 500px;
           background: #e1eef6;
         }
         path {
-          fill: rgb(29, 155, 240);
+          fill: #1ad1c2;
         }
       }
       .metric_retweets:hover {
@@ -187,7 +187,7 @@ $phoneWidth: 500px;
           background: #e1eef6;
         }
         path {
-          fill: rgb(29, 155, 240);
+          fill: #1ad1c2;
         }
       }
     }

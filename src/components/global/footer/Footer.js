@@ -18,7 +18,7 @@ export default function Footer() {
                         return <a key={index} href={item.url}>{item.text}</a>
                     })
                 }
-                <div>© 2022 Not Twitter, Inc.</div>
+                <div>© 2022 TeamSpeak, Inc.</div>
             </div>
         </>
     );
