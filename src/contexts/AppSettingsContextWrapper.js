@@ -4,7 +4,7 @@ const AppSettingsContext = createContext();
 
 function AppSettingsContextProvider(props)
 {
-    let isLocal = true;
+    let isLocal = false;
 
     let settingsList = {
         endpointPrefix: 'http://127.0.0.1/not_twitter_api/api',
