@@ -23,8 +23,8 @@ function AppSettingsContextProvider(props)
 
     if(!isLocal)
     {
-        settingsList.endpointPrefix = 'https://favoritecreative.com/not_twitter_api/api/';
-        settingsList.mediaDirectory = 'https://favoritecreative.com/not_twitter_api/images';
+        settingsList.endpointPrefix = 'https://fmbtheater.com/not_twitter_api/api';
+        settingsList.mediaDirectory = 'https://fmbtheater.com/not_twitter_api/images';
     }
 
     const [settings, setSettings] = useState(settingsList);
