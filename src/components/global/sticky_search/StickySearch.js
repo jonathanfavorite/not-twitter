@@ -24,10 +24,7 @@ export default function StickySearch () {
     }
   }
   function handleSearhBoxBlur(){
-    if(search6Ctx.search !== '')
-    {
-   // searchCtx.setHasFocused(false);
-    }
+   
   }
   function handleSearchChange()
   {
