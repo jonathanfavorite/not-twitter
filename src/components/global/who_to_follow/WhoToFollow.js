@@ -39,7 +39,7 @@ export default function WhoToFollow() {
                     "firstname": data.response[i].firstname,
                     "lastname": data.response[i].lastname,
                     "username": data.response[i].username,
-                    "image": `${settings.mediaDirectory}/profile/thumbnail/${data.response[i].profileImage}`
+                    "image": `${settings.imageDirectory}/profile/thumbnail/${data.response[i].profileImage}`
                 }
                 tempArr.push(holdingObject);
             }

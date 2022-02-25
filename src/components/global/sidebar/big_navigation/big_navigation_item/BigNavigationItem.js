@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import './BigNavigationItem.scss';
-
-
+import { SignedInUserContext } from '../../../../../contexts/SignedInUserDetailsContext';
+import {Link} from 'react-router-dom';
 export default function BigNavigationItem(props) {
     let circles;
     const {details} = props;
+    const signedInUser = useContext(SignedInUserContext);
     if(details.isMore)
     {
         circles = <>
@@ -27,7 +28,7 @@ export default function BigNavigationItem(props) {
                 (details.showOnMobile == false ? 'hideMeForMobile ' : '') +
                 (details.onlyDisplayOnMobile ? 'onlyMobile' : '')
             }> 
-                <a href={details.url} className={details.text == "Home" ? "big_navi_active" : ""}>
+                <Link to={details.url} className={details.text == "Home" ? "big_navi_active" : ""}>
                     <div className="navi_indi_container">
                 <div className='navi_indi_icon'>
                 <svg viewBox='0 0 24 24' aria-hidden='true'>
@@ -45,7 +46,7 @@ export default function BigNavigationItem(props) {
                     {details.text}
                 </div>
                 </div>
-                </a>
+                </Link>
             </div>
         </>
     );

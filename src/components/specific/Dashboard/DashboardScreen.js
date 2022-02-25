@@ -22,7 +22,9 @@ export default function DashboardScreen() {
           <Dashboard />
           </div>
           <div id="main_right">
-            <StickySearch />
+          
+              <StickySearch />
+            
             <WhatsHappening />
             <WhoToFollow />
             <Footer />

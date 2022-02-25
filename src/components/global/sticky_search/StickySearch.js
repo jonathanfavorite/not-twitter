@@ -1,33 +1,93 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import './StickySearch.scss'
-
+import SearchAutoFill from './SearchAutoFill/SearchAutoFill';
+import { StickySearchContext } from '../../../contexts/StickySearchContext';
+import { AppSettingsContext } from '../../../contexts/AppSettingsContextWrapper';
 export default function StickySearch () {
-  const [hasFocused, setHasFocused] = useState(false)
   const searchBoxRef = useRef();
+  const searchInputRef = useRef();
+  const searchCtx = useContext(StickySearchContext);
+  const settings = useContext(AppSettingsContext);
 
   function handleSearchBoxFocus()
   {
-    setHasFocused(true);
+    searchCtx.setClickedResult(false);
+    searchCtx.setHasFocused(true);
+  }
+
+  document.addEventListener("mousedown", handleOnBlur);
+
+  function handleOnBlur(event) {
+    if(searchBoxRef.current && !searchBoxRef.current.contains(event.target))
+    {
+      searchCtx.setHasFocused(false);
+    }
   }
   function handleSearhBoxBlur(){
-    setHasFocused(false);
+    if(search6Ctx.search !== '')
+    {
+   // searchCtx.setHasFocused(false);
+    }
   }
+  function handleSearchChange()
+  {
+    let val = searchInputRef.current.value;
+    searchCtx.setSearch(old => val);
+    
+  }
+
+  const fetchSearchResults = async () => {
+    const response = await fetch(`${settings.endpointPrefix}/search/?query=${searchCtx.search}`);
+   if(response.status >= 200 && response.status <= 299) {
+      const data = await response.json();
+      const results = data.Response.results;
+      if(results != null)
+      {
+        if(results.length > 0)
+        {
+          searchCtx.setSearchResults(old => results);
+        }
+        
+      }
+     
+   }
+  };
+  
+
+  useEffect(() => {
+    
+    let mounted = true;
+    (async () => {
+      searchCtx.setLoadingSearch(true);
+      if(mounted)
+      {
+        if(searchCtx.hasFocused)
+        {
+          fetchSearchResults();
+          //searchCtx.setLoadingSearch(false);
+        }
+      }
+     
+    })();
+    return () => mounted = false;
+  }, [searchCtx.search]);
+
+
 
   return (
     <>
-      <div id='top_sticky_search_wrap'>
+      <div id='top_sticky_search_wrap' ref={searchBoxRef}>
+      
         <div id='top_search_box' 
-            onBlur={handleSearhBoxBlur} 
             onFocus={handleSearchBoxFocus} 
-            useref={searchBoxRef}
             className={
-              (hasFocused) ? 'blue-border white-background' : ''
+              (searchCtx.hasFocused) ? 'blue-border white-background' : ''
             }
         >
           <div className='top_search_indi icon_wrap'>
               <div className='top_search_icon'>
             <svg
-              fill={hasFocused ? '#1ad1c2' : 'rgba(83,100,113,255)'}
+              fill={searchCtx.hasFocused ? '#1ad1c2' : 'rgba(83,100,113,255)'}
               viewBox='0 0 24 24'
               aria-hidden='true'
             >
@@ -39,10 +99,14 @@ export default function StickySearch () {
           </div>
 
             <div className='top_search_indi'>
-                <input type='text' placeholder='Search TeamSpeak' />
+                <input type='text' ref={searchInputRef} onKeyUp={handleSearchChange} placeholder={`Search TeamSpeak`} />
             </div>
 
+           
         </div>
+
+       
+        {searchCtx.hasFocused && <SearchAutoFill />}
       </div>
     </>
   )

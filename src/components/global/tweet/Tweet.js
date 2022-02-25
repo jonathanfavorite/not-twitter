@@ -50,7 +50,7 @@ export default function Tweet(props) {
               <div
                 className="tweet_userimg"
                 style={{
-                  backgroundImage: `url("${settings.mediaDirectory + details.userimage}")`,
+                  backgroundImage: `url("${settings.imageDirectory + details.userimage}")`,
                 }}
               ></div>
             </>

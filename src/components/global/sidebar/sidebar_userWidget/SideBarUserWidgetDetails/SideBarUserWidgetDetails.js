@@ -1,20 +1,22 @@
-import React from "react";
+import React, {useContext} from "react";
+import { AppSettingsContext } from "../../../../../contexts/AppSettingsContextWrapper";
 
 export default function SideBarUserWidgetDetails(props) {
   const { onClick, ctx, displayElipses, ...rest } = props;
+  const settings = useContext(AppSettingsContext);
   return (
     <>
       <div className="userWidget-image">
         <div
           className="userWidget-image-box"
           style={{
-            backgroundImage: "url(" + ctx.user.details.profileImage.thumb + ")",
+            backgroundImage: `url(${settings.imageDirectory}${ctx.user.details.profileImage.thumb})`,
           }}
         ></div>
       </div>
       <div className="userWidget-details">
         <div className="userWidget-displayname">{ctx.GetFullName()}</div>
-        <div className="userWidget-username">{ctx.user.details.username}</div>
+        <div className="userWidget-username">@{ctx.user.details.username}</div>
       </div>
       {displayElipses && (
         <div className="userWidget-more">

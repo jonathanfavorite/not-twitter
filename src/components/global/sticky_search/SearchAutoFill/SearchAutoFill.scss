@@ -1,0 +1,35 @@
+.search_autofill_wrap {
+    position:absolute;
+    
+    display: block;
+    width:100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #ccc;
+    border-radius: 10px;
+    min-height:20vh;
+    overflow:hidden;
+    overflow-y: auto;
+    max-height:calc(80vh - 50px);
+    top:46px;
+    .search_autofill_inner {
+       .searchfor {
+           text-align: center;
+           padding:20px;
+           color:rgb(83, 100, 113);
+       }
+    }
+
+    .search_autofill_loading_wrap {
+        position:absolute;
+        width:100%;
+        left:0;
+        top:0;
+        height:5px;
+        .autofill_loading {
+            
+            position: absolute;
+            height:5px;
+            background:#1ad1c2;
+        }
+    }
+}

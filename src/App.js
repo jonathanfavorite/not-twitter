@@ -12,6 +12,7 @@ import LogoutFunction from "./auth/LogoutFunction";
 import ProfileScreen from "./components/specific/Profile/ProfileScreen";
 import { ProfileDetailsProvider } from "./contexts/ProfileDetailsContext";
 import { AppSettingsContext, AppSettingsContextProvider } from "./contexts/AppSettingsContextWrapper";
+import { StickSearchProvider } from "./contexts/StickySearchContext";
 const App = () => {
   const signedInContext = useContext(SignedInUserContext);
 
@@ -45,14 +46,16 @@ const App = () => {
 }
 
 export default function AppWrapper() {
-  const settingsContext = useContext(AppSettingsContext);
+ 
   return (
 <>
 
 <AppSettingsContextProvider>
     <SignedInUserProvider>
-      <App />
-      </SignedInUserProvider>
+      <StickSearchProvider>
+        <App />
+      </StickSearchProvider>
+    </SignedInUserProvider>
 </AppSettingsContextProvider>
 </>
       );

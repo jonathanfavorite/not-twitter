@@ -85,7 +85,7 @@ export default function LoginForm(props) {
                               phone:data.response.userDetails.phone
                           },
                           details: {
-                              username: `@${data.response.username}`,
+                              username: `${data.response.username}`,
                               profileImage: {
                                   thumb: `${data.response.userDetails.profileImage}`,
                                   medium: `${data.response.userDetails.profileImage}`,

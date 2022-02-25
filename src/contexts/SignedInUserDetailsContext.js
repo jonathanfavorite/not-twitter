@@ -36,6 +36,7 @@ function SignedInUserProvider(props) {
     
       useEffect(() => {
         checkLoggedIn();
+
       },[]);
 
     const contextList = {

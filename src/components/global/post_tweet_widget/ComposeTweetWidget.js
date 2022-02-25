@@ -115,7 +115,7 @@ export default function ComposeTweetWidget () {
         <div className='compose_tweet_input_area'>
           <div className='compose_tweet_image_wrap'>
             <div className='compose_tweet_image' style={{
-              backgroundImage: "url(" + ctx.user.details.profileImage.thumb + ")"
+              backgroundImage: `url(${settings.imageDirectory}${ctx.user.details.profileImage.thumb})`
             }}></div>
           </div>
 

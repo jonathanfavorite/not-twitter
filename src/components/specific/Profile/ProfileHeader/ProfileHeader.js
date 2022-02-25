@@ -26,7 +26,7 @@ export default function ProfileBanner() {
               className="profile_image"
               style={{
                 backgroundImage:
-                  `url('${settings.mediaDirectory}/profile/thumbnail/${profileDetails.user.userDetails.profileImage}')`,
+                  `url('${settings.imageDirectory}/profile/thumbnail/${profileDetails.user.userDetails.profileImage}')`,
               }}
             ></div>
           </div>

@@ -8,7 +8,8 @@ function AppSettingsContextProvider(props)
 
     let settingsList = {
         endpointPrefix: 'http://127.0.0.1/not_twitter_api/api',
-        mediaDirectory: 'http://127.0.0.1/not_twitter_api/images',
+        imageDirectory: 'http://127.0.0.1/not_twitter_api/images',
+        
         theme: 'light',
         colors: {
             primary: '#00bcd4',
@@ -24,8 +25,11 @@ function AppSettingsContextProvider(props)
     if(!isLocal)
     {
         settingsList.endpointPrefix = 'https://fmbtheater.com/not_twitter_api/api';
-        settingsList.mediaDirectory = 'https://fmbtheater.com/not_twitter_api/images';
+        settingsList.imageDirectory = 'https://fmbtheater.com/not_twitter_api/images';
     }
+
+    settingsList.defaultProfilePictureLocation = `${settingsList.imageDirectory}/profile/thumbnail/default.jpg`;
+
 
     const [settings, setSettings] = useState(settingsList);
 
